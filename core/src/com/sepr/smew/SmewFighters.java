@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class SmewFighter extends ApplicationAdapter {
+public class SmewFighters extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
