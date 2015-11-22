@@ -9,7 +9,7 @@ public class LogoActor extends Actor {
     private Texture img;
 
     public LogoActor() {
-		img = new Texture("badlogic.jpg");
+        img = new Texture("badlogic.jpg");
     }
 
     @Override

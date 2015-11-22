@@ -7,13 +7,13 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.sepr.smew.screens.MainMenuScreen;
 
 public class SmewFighters extends Game {
-	// NOTE(avinashbot): Do we need to make these private and write getters?
+    // NOTE(avinashbot): Do we need to make these private and write getters?
     public SpriteBatch batch;
-	public ScreenViewport screenViewport;
+    public ScreenViewport screenViewport;
 
     public void create() {
         batch = new SpriteBatch();
-		screenViewport = new ScreenViewport();
+        screenViewport = new ScreenViewport();
         this.setScreen(new MainMenuScreen(this));
     }
 
