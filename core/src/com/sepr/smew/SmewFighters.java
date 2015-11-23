@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import com.sepr.smew.screens.MainMenuScreen;
 
+// TODO(avinashbot): Use javadoc or whatever the documentation standard is.
 public class SmewFighters extends Game {
     // NOTE(avinashbot): Do we need to make these private and write getters?
     public SpriteBatch batch;
