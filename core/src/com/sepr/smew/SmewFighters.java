@@ -12,16 +12,19 @@ public class SmewFighters extends Game {
     public SpriteBatch batch;
     public ScreenViewport screenViewport;
 
+    @Override
     public void create() {
         batch = new SpriteBatch();
         screenViewport = new ScreenViewport();
         this.setScreen(new MainMenuScreen(this));
     }
 
+    @Override
     public void render() {
         super.render();
     }
 
+    @Override
     public void dispose() {
         batch.dispose();
     }
