@@ -3,6 +3,7 @@ package com.sepr.smew;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import com.sepr.smew.screens.MainMenuScreen;
 
@@ -11,11 +12,16 @@ import com.sepr.smew.screens.MainMenuScreen;
 public class SmewFighters extends Game {
     // NOTE(avinashbot): Do we need to make these private and write getters?
     public SpriteBatch batch;
+    public OrthographicCamera camera;
     public ScreenViewport screenViewport;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
+
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 1280, 720);
+
         screenViewport = new ScreenViewport();
         this.setScreen(new MainMenuScreen(this));
     }
