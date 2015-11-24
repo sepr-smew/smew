@@ -19,6 +19,7 @@ public class SmewFighters extends Game {
     public void create() {
         batch = new SpriteBatch();
 
+        // FIXME(avinashbot): Magic Numbers! Find the difference between Camera, Viewport and Desktop!
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
 
