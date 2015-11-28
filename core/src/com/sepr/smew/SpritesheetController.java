@@ -26,8 +26,11 @@ public class SpritesheetController {
         currentRegion = spriteSheet[row][col];
     }
 
-    public TextureRegion getCurrentSprite(float delta) {
-        // The default implementation obviously has no behaviors.
+    public void update(float delta) {
+        // Here is where a subclass would update currentRegion.
+    }
+
+    public TextureRegion getCurrentSprite() {
         return currentRegion;
     }
 }

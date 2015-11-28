@@ -9,7 +9,6 @@ import com.sepr.smew.SpritesheetController;
 
 abstract class GameObject extends Actor {
     protected SpritesheetController sprController;
-    private float sprDelta = 0;
 
     protected int x = 0;
     protected int y = 0;
@@ -20,12 +19,11 @@ abstract class GameObject extends Actor {
 
     @Override
     public void act(float delta) {
-        sprDelta += delta;
+        sprController.update(delta);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(sprController.getCurrentSprite(sprDelta), x, y);
-        sprDelta = 0; // We have drawn the animation, now reset the delta.
+        batch.draw(sprController.getCurrentSprite(), x, y);
     }
 }
