@@ -4,17 +4,17 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Vector2;
 
 import com.sepr.smew.SpritesheetController;
 
 abstract class GameObject extends Actor {
     protected SpritesheetController sprController;
-
-    protected int x = 0;
-    protected int y = 0;
+    protected Vector2 position;
 
     public GameObject(SpritesheetController mySprController) {
         sprController = mySprController;
+        position = new Vector2(0, 0);
     }
 
     @Override
@@ -24,6 +24,6 @@ abstract class GameObject extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(sprController.getCurrentSprite(), x, y);
+        batch.draw(sprController.getCurrentSprite(), position.x, position.y);
     }
 }
