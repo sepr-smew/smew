@@ -1,19 +1,14 @@
 package com.sepr.smew.actors;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.Texture;
 
-public class LogoActor extends Actor {
-    // NOTE(avinashbot): When and how the hell do I dispose this thing?
-    private Texture img;
+import com.sepr.smew.SpritesheetController;
+
+public class LogoActor extends GameObject {
+    // Remember now, IMAGE is actually a 1x1 spritesheet.
+    private static final Texture IMAGE = new Texture("badlogic.jpg");
 
     public LogoActor() {
-        img = new Texture("badlogic.jpg");
-    }
-
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        batch.draw(img, 0, 0);
+        super(new SpritesheetController(IMAGE, 1, 1));
     }
 }
