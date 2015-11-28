@@ -26,7 +26,8 @@ public class SpritesheetController {
         currentRegion = spriteSheet[row][col];
     }
 
-    public TextureRegion getCurrentSprite() {
+    public TextureRegion getCurrentSprite(float delta) {
+        // The default implementation obviously has no behaviors.
         return currentRegion;
     }
 }
