@@ -18,18 +18,12 @@ abstract class GameObject extends Actor {
     private Animator animator;
 
     /**
-     * Holds the current position of the GameObject.
-     */
-    private final Vector2 position;
-
-    /**
      * Creates a GameObject with the given animator.
      * @param anim a new animator (or an existing one, if you want to
      *        synchonize animations.)
      */
     GameObject(Animator anim) {
         animator = anim;
-        position = new Vector2(0, 0);
     }
 
     /**
@@ -43,15 +37,8 @@ abstract class GameObject extends Actor {
      * Replace the GameObject Animator. Remember, this will replace the sprites,
      * not just the behaviors.
      */
-    protected void setAnimator(anim) {
+    protected void setAnimator(Animator anim) {
         animator = anim;
-    }
-
-    /**
-     * Get the <em>mutable</em> position Vector.
-     */
-    protected Vector2 getPosition() {
-        return position;
     }
 
     @Override
@@ -61,6 +48,6 @@ abstract class GameObject extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(animator.getCurrentSprite(), position.x, position.y);
+        batch.draw(animator.getCurrentSprite(), getX(), getY());
     }
 }
