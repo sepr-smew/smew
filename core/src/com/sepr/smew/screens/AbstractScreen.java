@@ -7,11 +7,22 @@ import com.badlogic.gdx.graphics.GL20;
 
 import com.sepr.smew.SmewFighters;
 
+/**
+ * A Screen with an empty stage and a basic implementation to get things
+ * rolling.
+ */
 abstract class AbstractScreen implements Screen {
+    /**
+     * A reference to the main class for switching to another screen.
+     */
     private final SmewFighters game;
+
+    /**
+     * The stage that holds and renders all of the objects in the screen.
+     */
     private final Stage stage;
 
-    public AbstractScreen(final SmewFighters gam) {
+    AbstractScreen(final SmewFighters gam) {
         game  = gam;
         stage = new Stage(game.screenViewport, game.batch);
         Gdx.input.setInputProcessor(stage);
