@@ -7,10 +7,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import com.sepr.smew.screens.MainMenuScreen;
 
-// TODO(avinashbot): Use javadoc or whatever the documentation standard is.
-// TODO(avinashbot): Use an AssetManager (see: https://github.com/libgdx/libgdx/wiki/Managing-your-assets)
+/** The main entry point for all platforms.
+  * This class should rarely be altered; most of the code is in the screens.
+  */
 public class SmewFighters extends Game {
-    // NOTE(avinashbot): Do we need to make these private and write getters?
     public SpriteBatch batch;
     public OrthographicCamera camera;
     public ScreenViewport screenViewport;

@@ -6,6 +6,6 @@ import com.sepr.smew.actors.LogoActor;
 public class MainMenuScreen extends AbstractScreen {
     public MainMenuScreen(final SmewFighters gam) {
         super(gam);
-        stage.addActor(new LogoActor());
+        getStage().addActor(new LogoActor());
     }
 }

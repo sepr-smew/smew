@@ -8,13 +8,21 @@ import com.badlogic.gdx.graphics.GL20;
 import com.sepr.smew.SmewFighters;
 
 abstract class AbstractScreen implements Screen {
-    protected final SmewFighters game;
-    protected final Stage stage;
+    private final SmewFighters game;
+    private final Stage stage;
 
     public AbstractScreen(final SmewFighters gam) {
         game  = gam;
         stage = new Stage(game.screenViewport, game.batch);
         Gdx.input.setInputProcessor(stage);
+    }
+
+    protected SmewFighters getGame() {
+        return game;
+    }
+
+    protected Stage getStage() {
+        return stage;
     }
 
     @Override
