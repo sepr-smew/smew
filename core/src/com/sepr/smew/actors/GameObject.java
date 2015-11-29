@@ -4,19 +4,19 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
-import com.sepr.smew.SpritesheetController;
+import com.sepr.smew.Animator;
 
 abstract class GameObject extends Actor {
-    private SpritesheetController sprController;
+    private Animator animator;
     private Vector2 position;
 
-    public GameObject(SpritesheetController mySprController) {
-        sprController = mySprController;
+    public GameObject(Animator newAnimator) {
+        animator = newAnimator;
         position = new Vector2(0, 0);
     }
 
-    protected SpritesheetController getSpritesheetController() {
-        return sprController;
+    protected Animator getAnimator() {
+        return animator;
     }
 
     protected Vector2 getPosition() {
@@ -25,11 +25,11 @@ abstract class GameObject extends Actor {
 
     @Override
     public void act(float deltaTime) {
-        sprController.update(deltaTime);
+        animator.update(deltaTime);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(sprController.getCurrentSprite(), position.x, position.y);
+        batch.draw(animator.getCurrentSprite(), position.x, position.y);
     }
 }
