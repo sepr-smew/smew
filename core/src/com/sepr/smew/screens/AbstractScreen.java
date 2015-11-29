@@ -22,10 +22,9 @@ abstract class AbstractScreen implements Screen {
      */
     private final Stage stage;
 
-    AbstractScreen(final SmewFighters gam) {
+    AbstractScreen(SmewFighters gam) {
         game  = gam;
         stage = new Stage(game.screenViewport, game.batch);
-        Gdx.input.setInputProcessor(stage);
     }
 
     protected SmewFighters getGame() {

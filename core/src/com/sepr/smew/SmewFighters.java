@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
-import com.sepr.smew.screens.MainMenuScreen;
+import com.sepr.smew.screens.RoundScreen;
 
 /**
   * The main entry point for all platforms.
@@ -39,7 +39,7 @@ public class SmewFighters extends Game {
         camera.setToOrtho(false, 1280, 720);
 
         screenViewport = new ScreenViewport();
-        this.setScreen(new MainMenuScreen(this));
+        this.setScreen(new RoundScreen(this));
     }
 
     @Override

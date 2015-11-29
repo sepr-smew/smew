@@ -1,6 +1,7 @@
 package com.sepr.smew.actors;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -23,7 +24,7 @@ abstract class GameObject extends Actor {
      *        synchonize animations.)
      */
     GameObject(Animator anim) {
-        animator = anim;
+        setAnimator(anim);
     }
 
     /**
@@ -34,11 +35,14 @@ abstract class GameObject extends Actor {
     }
 
     /**
-     * Replace the GameObject Animator. Remember, this will replace the sprites,
-     * not just the behaviors.
+     * Replace the GameObject Animator and readjust the actor's dimensions.
+     * Remember, this will replace the sprites, not just the behaviors.
      */
     protected void setAnimator(Animator anim) {
         animator = anim;
+        TextureRegion region = getAnimator().getCurrentSprite();
+        setWidth(region.getRegionWidth());
+        setHeight(region.getRegionHeight());
     }
 
     @Override
