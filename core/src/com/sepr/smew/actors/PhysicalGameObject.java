@@ -15,12 +15,13 @@ abstract class PhysicalGameObject extends GameObject {
     protected World world;
     protected Body body;
     private Animator anim;
-    
+
+    // TODO(avinashbot): Move x and y upstream to GameObject.
     PhysicalGameObject(Animator anim, float x, float y){
         super(anim);
         setWidth(anim.spriteWidth);
         setHeight(anim.spriteHeight);
-        
+
         setPosition(x, y);
 
         world = WorldManager.getWorld();
@@ -30,10 +31,11 @@ abstract class PhysicalGameObject extends GameObject {
         body.createFixture(shape, 1f); // The 1f is the density.
         shape.dispose();
     }
-    
+
+    // FIXME(avinashbot): Ambiguous overloads and magic constants. Best to
+    //                    remove.
     PhysicalGameObject(Animator anim) {
         this(anim, 300f, 300f);
-        
     }
 
     /**
@@ -41,13 +43,16 @@ abstract class PhysicalGameObject extends GameObject {
      * A BodyDef defines the object's type and position.
      */
     private BodyDef buildBodyDef() {
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        
-        bodyDef.position.set(getX() + getWidth()/2, 
-                getY() + getHeight()/2);
-        bodyDef.linearDamping=1f;
-        bodyDef.fixedRotation=true;
+        BodyDef bodyDef       = new BodyDef();
+        bodyDef.type          = BodyDef.BodyType.DynamicBody;
+        bodyDef.linearDamping = 1f;
+        bodyDef.fixedRotation = true;
+
+        bodyDef.position.set(
+            getX() + getWidth()/2,
+            getY() + getHeight()/2
+        );
+
         return bodyDef;
     }
 
@@ -70,9 +75,8 @@ abstract class PhysicalGameObject extends GameObject {
     @Override
     public void act(float deltaTime) {
         super.act(deltaTime);
-        /* Set the actor position according to the simulation.
-         * The world is updated by PhysicsStage before any actors act.
-         */
+        // Set the actor position according to the simulation.
+        // The world is updated by PhysicsStage before any actors act.
         Vector2 bodyPos = body.getPosition();
         setPosition(bodyPos.x, bodyPos.y);
     }

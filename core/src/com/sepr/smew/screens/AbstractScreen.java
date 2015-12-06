@@ -23,10 +23,11 @@ abstract class AbstractScreen implements Screen {
     private Stage stage;
 
     AbstractScreen(SmewFighters game, Stage stage) {
-        this.game=game;
-        this.stage=stage;
+        this.game = game;
+        this.stage = stage;
     }
-    
+
+    // TODO(avinashbot): Remove this!
     AbstractScreen(SmewFighters game) {
         this(game, new Stage(game.screenViewport, game.batch));
     }
@@ -44,14 +45,14 @@ abstract class AbstractScreen implements Screen {
         // First clear the screen...
         Gdx.gl.glClearColor(0.5f, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        // Then draw the stage AND all its children.
+        // Now simulate the stage, then draw the stage and all its children.
         stage.act(delta);
         stage.draw();
     }
 
     @Override
     public void resize(int width, int height) {
-        // thrid argument moves the camera position accordingly.
+        // The third argument moves the camera position accordingly.
         stage.getViewport().update(width, height, true);
     }
 

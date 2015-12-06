@@ -52,7 +52,19 @@ abstract class GameObject extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(animator.getCurrentSprite(), getX()-(animator.spriteWidth/2), getY()-(animator.spriteHeight/2),getOriginX(), getOriginY(),
-            getWidth(),getHeight(),getScaleX(), getScaleY(), getRotation());
+        // FIXME(avinashbot): These use the actor's parameters, which we are
+        //                    supposed to set manually.
+        batch.draw(
+            animator.getCurrentSprite(),
+            getX() - animator.spriteWidth/2,
+            getY() - animator.spriteHeight/2,
+            getOriginX(),
+            getOriginY(),
+            getWidth(),
+            getHeight(),
+            getScaleX(),
+            getScaleY(),
+            getRotation()
+        );
     }
 }

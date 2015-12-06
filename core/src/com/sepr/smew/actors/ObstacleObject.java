@@ -18,6 +18,8 @@ class ObstacleObject extends PhysicalGameObject {
     /**
      * Create a BodyDef from the actor's default X and Y.
      * A BodyDef defines the object's type and position.
+     * FIXME(avinashbot): This doesn't override the parent's buildBodyDef. ON
+     *                   PURPOSE.
      */
     private BodyDef buildBodyDef() {
         BodyDef bodyDef = new BodyDef();
