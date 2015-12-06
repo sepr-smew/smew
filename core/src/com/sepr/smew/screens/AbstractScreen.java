@@ -20,11 +20,15 @@ abstract class AbstractScreen implements Screen {
     /**
      * The stage that holds and renders all of the objects in the screen.
      */
-    private final Stage stage;
+    private Stage stage;
 
-    AbstractScreen(SmewFighters gam) {
-        game  = gam;
-        stage = new Stage(game.screenViewport, game.batch);
+    AbstractScreen(SmewFighters game, Stage stage) {
+        this.game=game;
+        this.stage=stage;
+    }
+    
+    AbstractScreen(SmewFighters game) {
+        this(game, new Stage(game.screenViewport, game.batch));
     }
 
     protected SmewFighters getGame() {
@@ -38,7 +42,7 @@ abstract class AbstractScreen implements Screen {
     @Override
     public void render(float delta) {
         // First clear the screen...
-        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClearColor(0.5f, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // Then draw the stage AND all its children.
         stage.act(delta);

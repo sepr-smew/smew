@@ -52,6 +52,7 @@ abstract class GameObject extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(animator.getCurrentSprite(), getX(), getY());
+        batch.draw(animator.getCurrentSprite(), getX()-(animator.spriteWidth/2), getY()-(animator.spriteHeight/2),getOriginX(), getOriginY(),
+            getWidth(),getHeight(),getScaleX(), getScaleY(), getRotation());
     }
 }

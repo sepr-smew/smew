@@ -2,6 +2,8 @@ package com.sepr.smew;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
@@ -38,7 +40,7 @@ public class SmewFighters extends Game {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
 
-        screenViewport = new ScreenViewport();
+        screenViewport = new ScreenViewport(camera);
         this.setScreen(new RoundScreen(this));
     }
 

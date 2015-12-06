@@ -15,7 +15,7 @@ public class LogoObject extends PhysicalGameObject {
      */
     private static final Texture image = new Texture("badlogic.jpg");
 
-    public LogoObject(World world) {
-        super(new Animator(image, 1, 1), world);
+    public LogoObject() {
+        super(new Animator(image, 1, 1));
     }
 }

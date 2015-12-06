@@ -23,14 +23,27 @@ public class Animator {
      * A reference to the current TextureRegion being used.
      */
     private TextureRegion currentRegion;
+    
+    /**
+     * Sprite height as calculated from the spritesheet.
+     */
+    public int spriteHeight;
+    
+    /**
+     * Sprite width as calculated from the spritesheet.
+     */
+    public int spriteWidth;
 
     public Animator(Texture sheet, int rows, int cols) {
         // TODO(avinashbot): Throw an error if rows/cols is a stupid value.
         frameRows = rows;
         frameCols = cols;
-
+        
+        spriteWidth = sheet.getWidth() / cols;
+        spriteHeight = sheet.getHeight() / rows;
+        
         spriteSheet = TextureRegion.split(
-            sheet, sheet.getWidth() / cols, sheet.getHeight() / rows
+            sheet, spriteWidth, spriteHeight
         );
         currentRegion = spriteSheet[0][0];
     }
