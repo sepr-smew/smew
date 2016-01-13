@@ -1,7 +1,5 @@
 package sepr.smew.screens;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
-
 import sepr.smew.SmewFighters;
 
 /**
@@ -9,6 +7,6 @@ import sepr.smew.SmewFighters;
  */
 public class StartupScreen extends AbstractScreen {
     public StartupScreen(final SmewFighters game) {
-        super(game, new Stage(game.viewport, game.batch));
+        super(game);
     }
 }
