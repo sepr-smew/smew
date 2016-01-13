@@ -1,8 +1,8 @@
-package com.sepr.smew.screens;
+package sepr.smew.screens;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-import com.sepr.smew.SmewFighters;
+import sepr.smew.SmewFighters;
 
 /**
  * The main menu with a title and a play button and other things.

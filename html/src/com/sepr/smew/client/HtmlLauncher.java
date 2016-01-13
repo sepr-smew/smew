@@ -1,9 +1,9 @@
-package com.sepr.smew.client;
+package sepr.smew.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.sepr.smew.SmewFighters;
+import sepr.smew.SmewFighters;
 
 public class HtmlLauncher extends GwtApplication {
 

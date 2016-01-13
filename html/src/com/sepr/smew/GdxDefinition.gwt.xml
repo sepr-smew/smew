@@ -6,7 +6,7 @@
 	<inherits name='com.badlogic.ashley_gwt' />
 
 	<inherits name='SmewFighters' />
-	<entry-point class='com.sepr.smew.client.HtmlLauncher' />
+	<entry-point class='sepr.smew.client.HtmlLauncher' />
 	
 	<set-configuration-property name="gdx.assetpath" value="../core/assets" />
 </module>

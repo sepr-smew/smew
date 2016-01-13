@@ -1,11 +1,11 @@
-package com.sepr.smew;
+package sepr.smew;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import com.sepr.smew.screens.StartupScreen;
+import sepr.smew.screens.StartupScreen;
 
 /**
   * The main entry point for all platforms.

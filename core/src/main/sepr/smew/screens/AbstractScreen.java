@@ -1,11 +1,11 @@
-package com.sepr.smew.screens;
+package sepr.smew.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.GL20;
 
-import com.sepr.smew.SmewFighters;
+import sepr.smew.SmewFighters;
 
 /**
  * A Screen with an empty stage and a basic implementation to get things
