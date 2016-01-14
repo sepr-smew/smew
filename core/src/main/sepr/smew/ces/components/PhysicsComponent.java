@@ -34,30 +34,21 @@ public class PhysicsComponent implements Component {
         this.height=height;
     }
     
+    public static PhysicsComponent staticBox(World world, float x, float y, float width, float height) {
+        return Box(world, x, y, width, height, BodyDef.BodyType.StaticBody );
+    }
+    
     public static PhysicsComponent dynamicBox(World world, float x, float y, float width, float height) {
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(x, y);
-
-        PolygonShape boundingBox = new PolygonShape();
-        boundingBox.setAsBox(width, height);
-
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.shape = boundingBox;
-        fixtureDef.density = 1f;
-
-        Body body = world.createBody(bodyDef);
-        body.createFixture(fixtureDef);
-        boundingBox.dispose();
-
-        PhysicsComponent pc = new PhysicsComponent(x, y, width, height);
-        pc.body = body;
-        return pc;
+        return Box(world, x, y, width, height, BodyDef.BodyType.DynamicBody );
     }
     
     public static PhysicsComponent kinematicBox(World world, float x, float y, float width, float height) {
+        return Box(world, x, y, width, height, BodyDef.BodyType.KinematicBody );
+    }
+    
+    public static PhysicsComponent Box(World world, float x, float y, float width, float height, BodyDef.BodyType bodyType) {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.KinematicBody;
+        bodyDef.type = bodyType;
         bodyDef.position.set(x, y);
 
         PolygonShape boundingBox = new PolygonShape();
@@ -73,6 +64,7 @@ public class PhysicsComponent implements Component {
         PhysicsComponent pc = new PhysicsComponent(x, y, width, height);
         pc.body = body;
         return pc;
+        
     }
     
     public void update(){
