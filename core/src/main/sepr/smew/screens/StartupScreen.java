@@ -3,7 +3,8 @@ package sepr.smew.screens;
 import sepr.smew.SmewFighters;
 
 /**
- * The main menu with a title and a play button and other things.
+ * The first screen. Think of it as the init screen launched by the game
+ * "bootloader".
  */
 public class StartupScreen extends AbstractScreen {
     public StartupScreen(final SmewFighters game) {
