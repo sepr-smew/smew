@@ -19,7 +19,7 @@ public class RoundScreen extends AbstractScreen {
 
     @Override
     public void render(float deltaTime) {
-        world.step(deltaTime); // NOTE(avinashbot): Prefer a fixed step?
-        super.update(deltaTime);
+        world.step(deltaTime, 6, 2); // NOTE(avinashbot): Prefer a fixed step?
+        //super.update(deltaTime);//Doesn't exist
     }
 }

@@ -1,13 +1,15 @@
 package sepr.smew.ces.systems;
 
+import sepr.smew.ces.components.*;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import sepr.smew.ces.components.PhysicsComponent;
 
 /**
  * Takes a SpriteBatch and renders all the components with physics.
@@ -18,7 +20,7 @@ public class PhysicsRenderingSystem extends IteratingSystem {
 
     private final SpriteBatch batch;
 
-    public PhysicalRenderingSystem(SpriteBatch gameBatch) {
+    public PhysicsRenderingSystem(SpriteBatch gameBatch) {
         // Get all entities with ONE PhysicsComponent and ONE TextureComponent only.
         super(Family.one(PhysicsComponent.class, TextureComponent.class).get());
         batch = gameBatch;
@@ -34,7 +36,7 @@ public class PhysicsRenderingSystem extends IteratingSystem {
     @Override
     public void processEntity(Entity entity, float deltaTime) {
         Vector2 pos = pm.get(entity).body.getPosition();
-        Texture tex = vm.get(entity).texture;
+        Texture tex = tm.get(entity).texture;
         batch.draw(tex, pos.x, pos.y);
     }
 }
