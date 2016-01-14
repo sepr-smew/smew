@@ -21,7 +21,7 @@ abstract class AbstractScreen extends ScreenAdapter {
      * The Engine manages the Entity Component system. It might seem difficult
      * to get into, but the CES system is a godsend for multi-developer teams.
      */
-    private final Engine engine;
+    protected final Engine engine;
 
     AbstractScreen(SmewFighters gam) {
         game = gam;

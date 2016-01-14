@@ -2,20 +2,34 @@ package sepr.smew.ces.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.utils.Array;
 
 public class SpritesheetComponent implements Component {
-    /**
-     * An array of texture regions that represent the frames of the sheet.
-     */
-    public TextureRegion[] frames;
-
-    /**
-     * The current frame, stored as an index of frames.
-     */
-    public int currentFrame = 0;
-
-    /**
-     * The rate of animation. Set to 0 if paused.
-     */
-    public float animRate = 0.0f;
+    public Animation animation;
+    public float stateTime;
+    
+    public SpritesheetComponent(float frameDuration, Array<? extends TextureRegion> keyFrames, Animation.PlayMode playMode) {
+        stateTime=0f;
+        animation = new Animation(frameDuration, keyFrames, playMode);
+    }
+    
+    public SpritesheetComponent(float frameDuration, Array<? extends TextureRegion> keyFrames) {
+        stateTime=0f;
+        animation = new Animation(frameDuration, keyFrames, Animation.PlayMode.LOOP);
+    }
+    
+    public SpritesheetComponent(Array<? extends TextureRegion> keyFrames) {
+        stateTime=0f;
+        animation = new Animation(0.1f, keyFrames, Animation.PlayMode.LOOP);
+    }
+    
+    //YES I KNOW. Behaviour does not belong here, these are convenience methods.
+    public TextureRegion getFrame(){
+        return animation.getKeyFrame(stateTime);
+    }
+    
+    public void update(float deltaTime){
+        stateTime+=deltaTime;
+    }
 }

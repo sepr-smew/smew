@@ -14,17 +14,18 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 /**
  * Takes a SpriteBatch and renders all the components with physics.
  */
-public class PhysicsRenderingSystem extends IteratingSystem {
-    private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
+public class RenderSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
+    private ComponentMapper<PositionComponent> posm = ComponentMapper.getFor(PositionComponent.class);
+    private ComponentMapper<PhysicsComponent> phym = ComponentMapper.getFor(PhysicsComponent.class);
 
     private final SpriteBatch batch;
 
-    public PhysicsRenderingSystem(SpriteBatch gameBatch) {
-        // Get all entities with ONE PhysicsComponent and ONE TextureComponent only.
-        super(Family.one(PhysicsComponent.class, TextureComponent.class).get());
+    public RenderSystem(SpriteBatch gameBatch) {
+        super(Family.all(TextureComponent.class).one(PhysicsComponent.class, PositionComponent.class).get(), 10);
         batch = gameBatch;
     }
+    
 
     @Override
 	public void update(float deltaTime) {
@@ -35,8 +36,15 @@ public class PhysicsRenderingSystem extends IteratingSystem {
 
     @Override
     public void processEntity(Entity entity, float deltaTime) {
-        Vector2 pos = pm.get(entity).body.getPosition();
-        Texture tex = tm.get(entity).texture;
-        batch.draw(tex, pos.x, pos.y);
+        TextureComponent tc = tm.get(entity);
+        if (phym.has(entity)) {
+            PhysicsComponent phyc = phym.get(entity);
+            batch.draw(tc.textureRegion, phyc.x, phyc.y, phyc.width, phyc.height);
+        }
+        else {
+            PositionComponent posc = posm.get(entity);
+            batch.draw(tc.textureRegion, posc.x, posc.y, posc.width, posc.height);
+        }
     }
 }
+
