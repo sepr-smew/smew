@@ -1,6 +1,5 @@
 package sepr.smew.ces.systems;
 
-import sepr.smew.ces.components.*;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,22 +9,26 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import sepr.smew.ces.components.*;
 
 /**
  * Takes a SpriteBatch and renders all the components with physics.
  */
 public class RenderSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
-    private ComponentMapper<PositionComponent> posm = ComponentMapper.getFor(PositionComponent.class);
-    private ComponentMapper<PhysicsComponent> phym = ComponentMapper.getFor(PhysicsComponent.class);
+    private ComponentMapper<BoundsComponent>  bm = ComponentMapper.getFor(BoundsComponent.class);
+    private ComponentMapper<OverlayComponent> om = ComponentMapper.getFor(OverlayComponent.class);
+    private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
 
     private final SpriteBatch batch;
 
     public RenderSystem(SpriteBatch gameBatch) {
-        super(Family.all(TextureComponent.class).one(PhysicsComponent.class, PositionComponent.class).get(), 10);
+        super(Family
+            .all(TextureComponent.class, BoundsComponent.class)
+            .one(PhysicsComponent.class, OverlayComponent.class)
+            .get(), 10);
         batch = gameBatch;
     }
-    
 
     @Override
 	public void update(float deltaTime) {
@@ -36,15 +39,18 @@ public class RenderSystem extends IteratingSystem {
 
     @Override
     public void processEntity(Entity entity, float deltaTime) {
+        // TODO(avinashbot): Don't subclass IteratingSystem and render all
+        //                   physics components before overlay components.
         TextureComponent tc = tm.get(entity);
-        if (phym.has(entity)) {
-            PhysicsComponent phyc = phym.get(entity);
-            batch.draw(tc.textureRegion, phyc.x, phyc.y, phyc.width, phyc.height);
+        BoundsComponent bc = bm.get(entity);
+        if (pm.has(entity)) {
+            PhysicsComponent pc = pm.get(entity);
+            Vector2 pos = pc.body.getPosition();
+            batch.draw(tc.textureRegion, pos.x, pos.y, bc.width, bc.height);
         }
         else {
-            PositionComponent posc = posm.get(entity);
-            batch.draw(tc.textureRegion, posc.x, posc.y, posc.width, posc.height);
+            OverlayComponent oc = om.get(entity);
+            batch.draw(tc.textureRegion, oc.x, oc.y, bc.width, bc.height);
         }
     }
 }
-

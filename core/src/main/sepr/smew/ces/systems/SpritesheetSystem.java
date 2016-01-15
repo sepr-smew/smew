@@ -10,24 +10,22 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-
 /**
  * Takes a SpriteBatch and renders all the components with physics.
  */
 public class SpritesheetSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
     private ComponentMapper<SpritesheetComponent> sprm = ComponentMapper.getFor(SpritesheetComponent.class);
-    
+
     public SpritesheetSystem() {
         super(Family.all(TextureComponent.class, SpritesheetComponent.class).get(), 9);
     }
-    
+
     @Override
     public void processEntity(Entity entity, float deltaTime) {
         TextureComponent tc = tm.get(entity);
         SpritesheetComponent sprc = sprm.get(entity);
         sprc.update(deltaTime);
-        tc.textureRegion = sprc.getFrame();
+        tc.textureRegion = sprc.currentFrame();
     }
 }
-

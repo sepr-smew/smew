@@ -8,28 +8,23 @@ import com.badlogic.gdx.utils.Array;
 public class SpritesheetComponent implements Component {
     public Animation animation;
     public float stateTime;
-    
+
     public SpritesheetComponent(float frameDuration, Array<? extends TextureRegion> keyFrames, Animation.PlayMode playMode) {
-        stateTime=0f;
+        stateTime = 0f;
         animation = new Animation(frameDuration, keyFrames, playMode);
     }
-    
+
     public SpritesheetComponent(float frameDuration, Array<? extends TextureRegion> keyFrames) {
-        stateTime=0f;
+        stateTime = 0f;
         animation = new Animation(frameDuration, keyFrames, Animation.PlayMode.LOOP);
     }
-    
-    public SpritesheetComponent(Array<? extends TextureRegion> keyFrames) {
-        stateTime=0f;
-        animation = new Animation(0.1f, keyFrames, Animation.PlayMode.LOOP);
-    }
-    
+
     //YES I KNOW. Behaviour does not belong here, these are convenience methods.
-    public TextureRegion getFrame(){
+    public TextureRegion currentFrame() {
         return animation.getKeyFrame(stateTime);
     }
-    
+
     public void update(float deltaTime){
-        stateTime+=deltaTime;
+        stateTime += deltaTime;
     }
 }
