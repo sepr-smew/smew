@@ -8,6 +8,10 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * An object that is affected by physics in a given Box2D world. Remember to
+ * add a TextureComponent as well if you want it to show up.
+ */
 public class PhysicsComponent implements Component {
     /**
      * The physics body. Can be dynamic, static or kinematic. Remember to

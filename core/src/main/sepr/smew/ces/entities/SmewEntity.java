@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import sepr.smew.ces.components.*;
 
+/**
+ * The one and only Smew! Controled with the keyboard.
+ */
 public class SmewEntity extends Entity {
     public SmewEntity(World world) {
         this.add(new TextureComponent());

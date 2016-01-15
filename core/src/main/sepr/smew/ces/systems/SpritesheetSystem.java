@@ -11,7 +11,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
- * Takes a SpriteBatch and renders all the components with physics.
+ * Stores and animates the keyframes associated with the spritesheet.
  */
 public class SpritesheetSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);

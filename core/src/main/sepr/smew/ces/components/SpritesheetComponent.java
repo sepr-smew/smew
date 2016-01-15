@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Controls the various animations that the Entity can perform.
+ */ 
 public class SpritesheetComponent implements Component {
     public Animation animation;
     public float stateTime;

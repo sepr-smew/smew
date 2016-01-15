@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.Component;
 
 /**
  * Stores the width and height of the object and allows clipping of the
- * texture.
+ * TextureComponent if needed.
  */
 public class BoundsComponent implements Component {
     public int width;

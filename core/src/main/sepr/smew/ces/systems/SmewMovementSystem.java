@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import sepr.smew.ces.components.*;
 
 /**
- * Takes a SpriteBatch and renders all the components with physics.
+ * Deals with detecting keyboard input and moving the smew accordingly.
  */
 public class SmewMovementSystem extends IteratingSystem {
     private ComponentMapper<SmewMovementComponent> kcm = ComponentMapper.getFor(SmewMovementComponent.class);
