@@ -25,7 +25,7 @@ public class SpritesheetSystem extends IteratingSystem {
     public void processEntity(Entity entity, float deltaTime) {
         TextureComponent tc = tm.get(entity);
         SpritesheetComponent sprc = sprm.get(entity);
-        sprc.update(deltaTime);
+        sprc.stateTime += deltaTime;
         tc.textureRegion = sprc.currentFrame();
     }
 }

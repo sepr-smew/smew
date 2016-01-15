@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * Controls the various animations that the Entity can perform.
- */ 
+ */
 public class SpritesheetComponent implements Component {
     public Animation animation;
     public float stateTime;
@@ -22,12 +22,7 @@ public class SpritesheetComponent implements Component {
         animation = new Animation(frameDuration, keyFrames, Animation.PlayMode.LOOP);
     }
 
-    //YES I KNOW. Behaviour does not belong here, these are convenience methods.
     public TextureRegion currentFrame() {
         return animation.getKeyFrame(stateTime);
-    }
-
-    public void update(float deltaTime){
-        stateTime += deltaTime;
     }
 }
