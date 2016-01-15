@@ -17,8 +17,8 @@ public class SpritesheetSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
     private ComponentMapper<SpritesheetComponent> sprm = ComponentMapper.getFor(SpritesheetComponent.class);
 
-    public SpritesheetSystem() {
-        super(Family.all(TextureComponent.class, SpritesheetComponent.class).get(), 9);
+    public SpritesheetSystem(int priority) {
+        super(Family.all(TextureComponent.class, SpritesheetComponent.class).get(), priority);
     }
 
     @Override

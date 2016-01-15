@@ -22,12 +22,13 @@ public class RoundScreen extends AbstractScreen {
         super(game);
         world = new World(Vector2.Zero, true);
 
-        engine.addSystem(new RenderSystem(new SpriteBatch()));
-        engine.addSystem(new SpritesheetSystem());
+        engine.addSystem(new SpritesheetSystem(1));
 
-        SmewMovementSystem ks = new SmewMovementSystem();
+        SmewMovementSystem ks = new SmewMovementSystem(2);
         Gdx.input.setInputProcessor(ks.inputProcessor);
         engine.addSystem(ks);
+
+        engine.addSystem(new RenderSystem(3, new SpriteBatch()));
 
         SmewEntity smew = new SmewEntity(world);
         engine.addEntity(smew);

@@ -27,8 +27,8 @@ public class SmewMovementSystem extends IteratingSystem {
     private Vector2 direction = Vector2.Zero.cpy();
     private ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 
-    public SmewMovementSystem() {
-        super(Family.all(SmewMovementComponent.class, PhysicsComponent.class).get(), 7);
+    public SmewMovementSystem(int priority) {
+        super(Family.all(SmewMovementComponent.class, PhysicsComponent.class).get(), priority);
     }
 
     public final InputAdapter inputProcessor = new InputAdapter() {

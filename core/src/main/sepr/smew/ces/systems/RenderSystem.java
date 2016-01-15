@@ -22,11 +22,11 @@ public class RenderSystem extends IteratingSystem {
 
     private final SpriteBatch batch;
 
-    public RenderSystem(SpriteBatch gameBatch) {
+    public RenderSystem(int priority, SpriteBatch gameBatch) {
         super(Family
             .all(TextureComponent.class, BoundsComponent.class)
             .one(PhysicsComponent.class, OverlayComponent.class)
-            .get(), 10);
+            .get(), priority);
         batch = gameBatch;
     }
 
