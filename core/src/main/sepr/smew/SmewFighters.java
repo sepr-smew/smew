@@ -3,7 +3,12 @@ package sepr.smew;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+
+import com.badlogic.gdx.math.Vector2;
 
 import sepr.smew.screens.*;
 
@@ -31,20 +36,29 @@ public class SmewFighters extends Game {
      * Although the game is played at the window's resolution, a stage will
      * probably use FitViewport.
      */
-    public ScreenViewport viewport;
+    public FitViewport viewport;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
-        viewport = new ScreenViewport(camera);
+        //camera.setToOrtho(false);
+        viewport = new FitViewport(512, 320, camera);
         //this.setScreen(new StartupScreen(this));
         this.setScreen(new RoundScreen(this));
+    }
+    
+    @Override
+    public void resize(int width, int height){
+        viewport.update(width, height, true);
     }
 
     @Override
     public void render() {
         super.render();
+        batch.setProjectionMatrix(camera.combined);
+        viewport.apply(true);
+        
     }
 
     @Override

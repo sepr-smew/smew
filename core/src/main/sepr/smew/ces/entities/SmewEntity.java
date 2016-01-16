@@ -21,7 +21,7 @@ public class SmewEntity extends Entity {
         Array frames = new Array(TextureRegion.split(smew_sprites, smew_sprites.getWidth()/frame_count, smew_sprites.getHeight())[0]);
 
         this.add(new SpritesheetComponent(0.1f, frames));
-        this.add(PhysicsComponent.dynamicBox(world, 100, 100, 20, 40));
+        this.add(PhysicsComponent.dynamicBox(world, 0, 0, 20, 40));
         this.add(new SmewMovementComponent(100f));
     }
 }

@@ -2,6 +2,7 @@ package sepr.smew.ces.systems;
 
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.core.ComponentMapper;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.math.Vector2;
@@ -20,9 +21,9 @@ public class RenderSystem extends IteratingSystem {
     private ComponentMapper<OverlayComponent> om = ComponentMapper.getFor(OverlayComponent.class);
     private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
 
-    private final SpriteBatch batch;
+    private final Batch batch;
 
-    public RenderSystem(int priority, SpriteBatch gameBatch) {
+    public RenderSystem(int priority, Batch gameBatch) {
         super(Family
             .all(TextureComponent.class, BoundsComponent.class)
             .one(PhysicsComponent.class, OverlayComponent.class)
