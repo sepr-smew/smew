@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" nextobjectid="18">
  <tileset firstgid="1" name="stone_small2" tilewidth="128" tileheight="128" tilecount="4">
   <image source="stone_small2.jpg" width="256" height="256"/>
+  <tile id="1">
+   <properties>
+    <property name="wall" value=""/>
+   </properties>
+   <objectgroup draworder="index">
+    <object id="0" x="1" y="1" width="125" height="125"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <layer name="Tile Layer 1" width="16" height="10">
   <data encoding="base64" compression="zlib">
    eJyNkkkKADAIA93+/+ZeKkhIbA8DVolRaZhZCPKi6k0N/IJvJ/XWs1pBnvWaetZDxTX0Sfy2WWacoFc+OHfn+rZqR9wfwf23uzOPWPx/cq9/8cMB4+MBfA==
   </data>
  </layer>
+ <objectgroup name="collision">
+  <object id="4" x="3.14367" y="3.14367" width="128.89" height="506.13"/>
+  <object id="5" x="3.14367" y="770.198" width="119.459" height="502.986"/>
+  <object id="8" x="1923.92" y="773.342" width="122.603" height="509.274"/>
+  <object id="10" x="125.747" y="1156.87" width="1798.18" height="119.459"/>
+  <object id="11" x="135.178" y="0" width="757.623" height="119.459"/>
+  <object id="13" x="1923.92" y="6.28733" width="119.459" height="499.843"/>
+  <object id="14" x="1150.58" y="3.14367" width="767.054" height="119.459"/>
+ </objectgroup>
 </map>

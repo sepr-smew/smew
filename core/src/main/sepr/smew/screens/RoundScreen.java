@@ -33,7 +33,7 @@ public class RoundScreen extends AbstractScreen {
         Batch batch = new SpriteBatch();
         engine.addSystem(new RenderSystem(3, batch));
         engine.addSystem(new MapRenderSystem(2));
-        MapEntity mapEntity = new Map("Maps/test1.tmx", batch, game.camera).entity();
+        MapEntity mapEntity = new Map("Maps/test1.tmx", world, batch, game.camera).entity();
         engine.addEntity(mapEntity);
         
         

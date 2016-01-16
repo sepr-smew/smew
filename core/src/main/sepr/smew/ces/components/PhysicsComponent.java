@@ -18,6 +18,8 @@ public class PhysicsComponent implements Component {
      * attach a shape fixture when you have the body.
      */
     public Body body;
+    private float width;
+    private float height;
 
     public static PhysicsComponent staticBox(World world, float x, float y, float width, float height) {
         return box(world, x, y, width, height, BodyDef.BodyType.StaticBody);
@@ -34,10 +36,10 @@ public class PhysicsComponent implements Component {
     private static PhysicsComponent box(World world, float x, float y, float width, float height, BodyDef.BodyType bodyType) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = bodyType;
-        bodyDef.position.set(x, y);
+        bodyDef.position.set(x+(width/2), y+(height/2));
 
         PolygonShape boundingBox = new PolygonShape();
-        boundingBox.setAsBox(width, height);
+        boundingBox.setAsBox(width/2, height/2);
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = boundingBox;
@@ -48,6 +50,16 @@ public class PhysicsComponent implements Component {
 
         PhysicsComponent pc = new PhysicsComponent();
         pc.body = body;
+        pc.width=width;
+        pc.height=height;
         return pc;
     }
+    
+    
+    public Vector2 getBottomLeft(){
+        return body.getPosition().sub(width/2, height/2);
+    }
+    
 }
+
+

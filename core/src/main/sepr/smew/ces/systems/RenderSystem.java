@@ -46,7 +46,7 @@ public class RenderSystem extends IteratingSystem {
         BoundsComponent bc = bm.get(entity);
         if (pm.has(entity)) {
             PhysicsComponent pc = pm.get(entity);
-            Vector2 pos = pc.body.getPosition();
+            Vector2 pos = pc.getBottomLeft();
             batch.draw(tc.textureRegion, pos.x, pos.y, bc.width, bc.height);
         }
         else {
