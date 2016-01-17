@@ -19,8 +19,10 @@ import sepr.smew.util.TileMapManager;
 public class GameScreen extends AbstractScreen {
     private World world;
     private TileMapManager tmManager;
-
     private final Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
+
+    public boolean paused = false;
+    final SmewMovementSystem sms;
 
     public GameScreen(SmewFighters game) {
         super(game);
@@ -30,11 +32,11 @@ public class GameScreen extends AbstractScreen {
 
         Engine e = getEngine();
 
-        SmewMovementSystem sms = new SmewMovementSystem(1);
+        sms = new SmewMovementSystem(1);
         Gdx.input.setInputProcessor(sms.inputProcessor);
         e.addSystem(sms);
 
-        e.addSystem(new DisplaySystem(3, game.viewport, game.batch));
+        e.addSystem(new DisplaySystem(2, game.viewport, game.batch));
 
         e.addEntity(new SmewEntity(world));
 
@@ -44,10 +46,9 @@ public class GameScreen extends AbstractScreen {
     @Override
     public void render(float deltaTime) {
         world.step(deltaTime, 6, 2);
-        // Render the tiles
-        tmManager.render();
-        debugRenderer.render(world, new Matrix4(getGame().camera.combined));
-        // Step the engine
-        super.render(deltaTime);
+
+        tmManager.render();                                                  // Render the tiles
+        super.render(deltaTime);                                             // Render everything else
+        debugRenderer.render(world, new Matrix4(getGame().camera.combined)); // Render debug squares
     }
 }

@@ -39,7 +39,7 @@ public class SmewFighters extends Game {
         camera = new OrthographicCamera();
         viewport = new FitViewport(512, 320, camera);
 
-        this.setScreen(new GameScreen(this));
+        this.setScreen(new BootstrapScreen(this));
     }
 
     @Override
@@ -53,7 +53,7 @@ public class SmewFighters extends Game {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         viewport.apply(true);
-        super.render();
+        super.render(); // Now delegate rendering to screen
     }
 
     @Override

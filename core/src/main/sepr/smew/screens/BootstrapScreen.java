@@ -12,4 +12,10 @@ public class BootstrapScreen extends AbstractScreen {
     public BootstrapScreen(final SmewFighters game) {
         super(game);
     }
+
+    @Override
+    public void show() {
+        getGame().setScreen(new GameScreen(getGame()));
+        this.dispose();
+    }
 }

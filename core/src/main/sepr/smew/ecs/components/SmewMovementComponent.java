@@ -10,9 +10,5 @@ public class SmewMovementComponent implements Component {
     /**
      * The velocity at which the smew must travel when a key is pressed.
      */
-    public float magnitude;
-
-    public SmewMovementComponent(float magnitude) {
-        this.magnitude = magnitude;
-    }
+    public float magnitude = 80f;
 }

@@ -13,7 +13,7 @@ import sepr.smew.ecs.components.SmewMovementComponent;
 public class SmewEntity extends Entity {
     public SmewEntity(World world) {
         this.add(new DisplayComponent(new SmewActor(this)));
-        this.add(new SmewMovementComponent(80f));
+        this.add(new SmewMovementComponent());
         this.add(PhysicsComponent.dynamicBox(world, 100, 100, 25, 35));
     }
 }
