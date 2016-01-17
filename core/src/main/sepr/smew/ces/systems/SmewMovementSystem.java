@@ -75,6 +75,7 @@ public class SmewMovementSystem extends IteratingSystem {
         for (Integer keycode : pressedKeys){
             direction.add(directionFromKey(keycode));
         }
+        direction.nor();
         super.update(deltaTime);
     }
 

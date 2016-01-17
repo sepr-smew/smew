@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" nextobjectid="27">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" nextobjectid="29">
  <tileset firstgid="1" name="stone_small2" tilewidth="128" tileheight="128" tilecount="4">
   <image source="stone_small2.jpg" width="256" height="256"/>
   <tile id="1">
@@ -28,5 +28,8 @@
   <object id="24" x="1924" y="136" width="248" height="500"/>
   <object id="25" x="2184" y="1160" width="1268" height="240"/>
   <object id="26" x="3716" y="1160" width="256" height="240"/>
+ </objectgroup>
+ <objectgroup color="#3d3dff" name="rooms">
+  <object id="27" x="2048" y="1280" width="2048" height="1280"/>
  </objectgroup>
 </map>

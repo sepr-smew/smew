@@ -14,22 +14,30 @@ import sepr.smew.SmewFighters;
 import sepr.smew.ces.entities.*;
 import sepr.smew.ces.systems.*;
 import sepr.smew.ces.components.*;
-import sepr.smew.map.*;
+
+import sepr.smew.util.*;
 
 import com.badlogic.gdx.ScreenAdapter;
 
 import com.badlogic.ashley.core.Family;
+
+
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.math.Matrix4;
 
 /**
  * A level in the game set in a given location.
  * TODO(avinashbot): Manage pausing.
  */
 public class RoundScreen extends AbstractScreen {
-    public Map map;
+    public TileMapManager map;
     //public Engine engine;
     public Batch batch;
     public World world;
     public OrthographicCamera camera;
+    
+    Box2DDebugRenderer debugRenderer;
+    Matrix4 debugMatrix;
 
     
     public RoundScreen(final SmewFighters game) {
@@ -41,12 +49,16 @@ public class RoundScreen extends AbstractScreen {
         
         batch = new SpriteBatch();
         
-        map = new Map("Maps/test1.tmx", world, batch, game.camera);
+        //map = new Map("Maps/test1.tmx", world, batch, game.camera);
+        map = new TileMapManager("Maps/test1.tmx", batch, game.camera);
+        map.generateTileCollision(world);
         
-        MapEntity mapEntity = map.entity();
+        //MapEntity mapEntity = map.entity();
+        MapEntity mapEntity = new MapEntity(map);
         SmewEntity smew = new SmewEntity(world);
         EnemyEntity enemy = new EnemyEntity(world, 80f, 70f);
-        CameraEntity cameraEntity = new CameraEntity(camera, 128f, 80f);
+        //CameraEntity cameraEntity = new CameraEntity(camera, 128f, 80f);
+        CameraEntity cameraEntity = new CameraEntity(camera);
         
         engine.addEntity(mapEntity);
         engine.addEntity(smew);
@@ -75,11 +87,16 @@ public class RoundScreen extends AbstractScreen {
         engine.addSystem(smewMovementSystem);
         engine.addSystem(enemySystem);
         
+        
+        debugRenderer=new Box2DDebugRenderer();
+        
     }
 
     @Override
     public void render(float deltaTime) {
         world.step(deltaTime, 6, 2); // NOTE(avinashbot): Prefer a fixed step?
         super.render(deltaTime);
+        debugMatrix=new Matrix4(camera.combined);
+        debugRenderer.render(world, debugMatrix);
     }
 }

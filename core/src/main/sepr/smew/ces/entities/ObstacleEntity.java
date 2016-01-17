@@ -3,7 +3,7 @@ package sepr.smew.ces.entities;
 import com.badlogic.ashley.core.Entity;
 
 
-import sepr.smew.map.*;
+
 import sepr.smew.ces.components.*;
 
 import com.badlogic.gdx.physics.box2d.World;

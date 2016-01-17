@@ -1,13 +1,14 @@
 package sepr.smew.ces.components;
 
-import sepr.smew.map.*;
+
 import com.badlogic.ashley.core.Component;
+import sepr.smew.util.*;
 
 
 public class MapComponent implements Component {
-    public Map map;
+    public TileMapManager map;
     
-    public MapComponent(Map map){
+    public MapComponent(TileMapManager map){
         this.map=map;
     }
 }

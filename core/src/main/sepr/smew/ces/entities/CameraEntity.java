@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import sepr.smew.ces.components.*;
 
 public class CameraEntity extends Entity {
-    public CameraEntity(OrthographicCamera camera, float roomSizeX, float roomSizeY) {
-        this.add(new CameraComponent(camera, roomSizeX, roomSizeY));
+    public CameraEntity(OrthographicCamera camera) {
+        this.add(new CameraComponent(camera));
     }
 }

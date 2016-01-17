@@ -10,7 +10,8 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import sepr.smew.ces.components.*;
-import sepr.smew.map.*;
+
+import sepr.smew.util.*;
 
 /**
  * Takes a SpriteBatch and renders all the components with physics.
@@ -28,7 +29,7 @@ public class MapRenderSystem extends IteratingSystem {
     @Override
     public void processEntity(Entity entity, float deltaTime) {
         MapComponent mc = mm.get(entity);
-        Map map = mc.map;
+        TileMapManager map = mc.map;
         map.render();
     }
 }
