@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" nextobjectid="18">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" nextobjectid="27">
  <tileset firstgid="1" name="stone_small2" tilewidth="128" tileheight="128" tilecount="4">
   <image source="stone_small2.jpg" width="256" height="256"/>
   <tile id="1">
@@ -11,18 +11,22 @@
    </objectgroup>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="16" height="10">
+ <layer name="Tile Layer 1" width="32" height="20">
   <data encoding="base64" compression="zlib">
-   eJyNkkkKADAIA93+/+ZeKkhIbA8DVolRaZhZCPKi6k0N/IJvJ/XWs1pBnvWaetZDxTX0Sfy2WWacoFc+OHfn+rZqR9wfwf23uzOPWPx/cq9/8cMB4+MBfA==
+   eJzFlcEOgzAMQwvr/3/zdhhSFPnZ7Ya2Q0Sp6iY4jjnHGOefY77iEE8V9UzHpztmiaPgO7af7biOV/lpXfcqfra8vQ71HR1P56gewqu1ihU8cU94pQWq5/EO0ofjk/STMHXvyu904vZV/12+pD/ikL4r8e9mQM2Pmz/1nnzh4vcun9m971f5U78/nd/Uw9q/pDXXP/JM58Mr/pt8mfSruFP17fpvX9f5d7NL3Kz0381wz+/8RnFB/1+aZ+LPeYzT0A5e3UH9S/wpPGnO7a3OD63v8pVv4glIxQYw
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="4" x="3.14367" y="3.14367" width="128.89" height="506.13"/>
-  <object id="5" x="3.14367" y="770.198" width="119.459" height="502.986"/>
-  <object id="8" x="1923.92" y="773.342" width="122.603" height="509.274"/>
-  <object id="10" x="125.747" y="1156.87" width="1798.18" height="119.459"/>
-  <object id="11" x="135.178" y="0" width="757.623" height="119.459"/>
-  <object id="13" x="1923.92" y="6.28733" width="119.459" height="499.843"/>
-  <object id="14" x="1150.58" y="3.14367" width="767.054" height="119.459"/>
+  <object id="4" x="3.14367" y="4" width="128.89" height="2544"/>
+  <object id="8" x="1923.92" y="2053.34" width="244.08" height="386.658"/>
+  <object id="10" x="125.747" y="2436.87" width="3970.25" height="119.459"/>
+  <object id="11" x="135.178" y="1160" width="757.623" height="239.459"/>
+  <object id="13" x="1923.92" y="892" width="248.08" height="894.13"/>
+  <object id="14" x="1150.58" y="1156" width="767.054" height="246.603"/>
+  <object id="21" x="136" y="0" width="3964" height="124"/>
+  <object id="22" x="3976" y="132" width="128" height="2300"/>
+  <object id="24" x="1924" y="136" width="248" height="500"/>
+  <object id="25" x="2184" y="1160" width="1268" height="240"/>
+  <object id="26" x="3716" y="1160" width="256" height="240"/>
  </objectgroup>
 </map>

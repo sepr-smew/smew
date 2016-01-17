@@ -50,14 +50,14 @@ public class SmewFighters extends Game {
     
     @Override
     public void resize(int width, int height){
-        viewport.update(width, height, true);
+        viewport.update(width, height, false);
     }
 
     @Override
     public void render() {
         super.render();
         batch.setProjectionMatrix(camera.combined);
-        viewport.apply(true);
+        viewport.apply(false);
         
     }
 

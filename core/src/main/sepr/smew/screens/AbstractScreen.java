@@ -23,8 +23,8 @@ abstract class AbstractScreen extends ScreenAdapter {
      */
     protected final Engine engine;
 
-    AbstractScreen(SmewFighters gam) {
-        game = gam;
+    AbstractScreen(SmewFighters game) {
+        this.game = game;
         engine = new Engine();
     }
 

@@ -55,9 +55,12 @@ public class PhysicsComponent implements Component {
         return pc;
     }
     
-    
     public Vector2 getBottomLeft(){
         return body.getPosition().sub(width/2, height/2);
+    }
+    
+    public Vector2 getCentre(){
+        return body.getPosition();
     }
     
 }
