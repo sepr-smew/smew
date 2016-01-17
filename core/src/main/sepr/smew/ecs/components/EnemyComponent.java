@@ -7,4 +7,4 @@ import com.badlogic.ashley.core.Component;
  */
 public class EnemyComponent implements Component {
     public float speed = 2000f;
-        }
+}
