@@ -7,5 +7,5 @@ import com.badlogic.ashley.core.Component;
  */
 public class PointsComponent implements Component {
     public int health = 5;
-    public int score  = 0;
+    public int score = 0;
 }

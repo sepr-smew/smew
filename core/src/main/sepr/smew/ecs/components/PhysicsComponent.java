@@ -22,7 +22,7 @@ public class PhysicsComponent implements Component {
      * drawing.
      */
     public Vector2 drawPos() {
-        return body.getPosition().sub(width/2, height/2);
+        return body.getPosition().sub(width / 2, height / 2);
     }
 
     public static PhysicsComponent staticBox(World world, float x, float y, float width, float height) {
@@ -41,10 +41,10 @@ public class PhysicsComponent implements Component {
         // Create a BodyDef with the box type and initial position.
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = bodyType;
-        bodyDef.position.set(x+(width/2), y+(height/2));
+        bodyDef.position.set(x + (width / 2), y + (height / 2));
         // Create a shape to assign to the fixture. Only a box is used in this case.
         PolygonShape boundingBox = new PolygonShape();
-        boundingBox.setAsBox(width/2, height/2);
+        boundingBox.setAsBox(width / 2, height / 2);
         // Attach the shape to the fixture.
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = boundingBox;

@@ -56,8 +56,8 @@ public class SmewActor extends Actor {
 
     private static Animation loadAnimation(String filepath, int rows, int cols, float dur) {
         Texture tex = new Texture(filepath);
-        TextureRegion[][] regions = TextureRegion.split(tex, tex.getWidth()/cols, tex.getHeight()/rows);
-        TextureRegion[] animRegions = new TextureRegion[rows*cols];
+        TextureRegion[][] regions = TextureRegion.split(tex, tex.getWidth() / cols, tex.getHeight() / rows);
+        TextureRegion[] animRegions = new TextureRegion[rows * cols];
         int index = 0;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {

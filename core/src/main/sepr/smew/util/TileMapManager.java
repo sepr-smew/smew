@@ -26,7 +26,7 @@ public class TileMapManager {
         this.batch = batch;
         this.camera = camera;
         map = new TmxMapLoader().load(filename);
-        mapLayer = (TiledMapTileLayer)map.getLayers().get(0);
+        mapLayer = (TiledMapTileLayer) map.getLayers().get(0);
         collisionLayer = map.getLayers().get("collision");
         renderer = new OrthogonalTiledMapRenderer(map, scale, batch);
     }
@@ -40,13 +40,13 @@ public class TileMapManager {
         for (MapObject object : collisionLayer.getObjects()) {
             // Get object properties
             MapProperties props = object.getProperties();
-            float x      = scale * props.get("x", Float.class);
-            float y      = scale * props.get("y", Float.class);
-            float width  = scale * props.get("width", Float.class);
+            float x = scale * props.get("x", Float.class);
+            float y = scale * props.get("y", Float.class);
+            float width = scale * props.get("width", Float.class);
             float height = scale * props.get("height", Float.class);
             // Assign the properties to the body.
-            bodyDef.position.set(x+(width/2), y+(height/2));
-            shape.setAsBox(width/2, height/2);
+            bodyDef.position.set(x + (width / 2), y + (height / 2));
+            shape.setAsBox(width / 2, height / 2);
             fixtureDef.shape = shape;
             Body body = world.createBody(bodyDef);
             body.createFixture(fixtureDef);

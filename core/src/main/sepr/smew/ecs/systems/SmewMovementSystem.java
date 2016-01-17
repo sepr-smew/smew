@@ -66,7 +66,7 @@ public class SmewMovementSystem extends IteratingSystem {
     @Override
     public void update(float deltaTime) {
         direction = Vector2.Zero.cpy();
-        for (Integer keycode : pressedKeys){
+        for (Integer keycode : pressedKeys) {
             direction.add(directionFromKey(keycode));
         }
         super.update(deltaTime);
