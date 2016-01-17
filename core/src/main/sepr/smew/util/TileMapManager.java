@@ -23,26 +23,26 @@ public class TileMapManager {
     private float scale = 0.25f;
 
     public TileMapManager(String filename, Batch batch, OrthographicCamera camera) {
-        this.batch = batch;
-        this.camera = camera;
-        map = new TmxMapLoader().load(filename);
-        mapLayer = (TiledMapTileLayer) map.getLayers().get(0);
+        this.batch     = batch;
+        this.camera    = camera;
+        map            = new TmxMapLoader().load(filename);
+        mapLayer       = (TiledMapTileLayer) map.getLayers().get(0);
         collisionLayer = map.getLayers().get("collision");
-        renderer = new OrthogonalTiledMapRenderer(map, scale, batch);
+        renderer       = new OrthogonalTiledMapRenderer(map, scale, batch);
     }
 
     public void generateTileCollision(World world) {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.type    = BodyDef.BodyType.StaticBody;
         FixtureDef fixtureDef = new FixtureDef();
-        PolygonShape shape = new PolygonShape();
+        PolygonShape shape    = new PolygonShape();
 
         for (MapObject object : collisionLayer.getObjects()) {
             // Get object properties
             MapProperties props = object.getProperties();
-            float x = scale * props.get("x", Float.class);
-            float y = scale * props.get("y", Float.class);
-            float width = scale * props.get("width", Float.class);
+            float x      = scale * props.get("x", Float.class);
+            float y      = scale * props.get("y", Float.class);
+            float width  = scale * props.get("width", Float.class);
             float height = scale * props.get("height", Float.class);
             // Assign the properties to the body.
             bodyDef.position.set(x + (width / 2), y + (height / 2));
@@ -57,6 +57,7 @@ public class TileMapManager {
 
     public void render() {
         renderer.setView(camera);
+
         batch.begin();
         renderer.renderTileLayer(mapLayer);
         batch.end();
