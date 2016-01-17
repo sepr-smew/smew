@@ -41,39 +41,40 @@ public class RoundScreen extends AbstractScreen {
         
         batch = new SpriteBatch();
         
+        map = new Map("Maps/test1.tmx", world, batch, game.camera);
         
-        
+        MapEntity mapEntity = map.entity();
         SmewEntity smew = new SmewEntity(world);
-        CameraEntity cameraEntity = new CameraEntity(camera, 512f, 320f);
+        EnemyEntity enemy = new EnemyEntity(world, 80f, 70f);
+        CameraEntity cameraEntity = new CameraEntity(camera, 128f, 80f);
         
+        engine.addEntity(mapEntity);
         engine.addEntity(smew);
+        engine.addEntity(enemy);
         engine.addEntity(cameraEntity);
         
+        // graphics related systems
         SpritesheetSystem spritesheetSystem = new SpritesheetSystem(1);
         DirectionalSpritesheetSystem dSpritesheetSystem = new DirectionalSpritesheetSystem(1);
-
-        SmewMovementSystem smewMovementSystem = new SmewMovementSystem(2);
-        Gdx.input.setInputProcessor(smewMovementSystem.inputProcessor);
-        
         CameraMovementSystem cameraMovementSystem = new CameraMovementSystem(2);
-        
         MapRenderSystem mapRenderSystem = new MapRenderSystem(2);
-        
         RenderSystem renderSystem = new RenderSystem(3, batch);
-        
         
         engine.addSystem(spritesheetSystem);
         engine.addSystem(dSpritesheetSystem);
-        engine.addSystem(smewMovementSystem);
         engine.addSystem(cameraMovementSystem);
         engine.addSystem(mapRenderSystem);
         engine.addSystem(renderSystem);
         
-
-        map = new Map("Maps/test1.tmx", world, batch, game.camera);
-        MapEntity mapEntity = map.entity();
+        // movement
+        SmewMovementSystem smewMovementSystem = new SmewMovementSystem(2);
+        Gdx.input.setInputProcessor(smewMovementSystem.inputProcessor);
         
-        engine.addEntity(mapEntity);
+        EnemySystem enemySystem = new EnemySystem(2, smew);
+        
+        engine.addSystem(smewMovementSystem);
+        engine.addSystem(enemySystem);
+        
     }
 
     @Override

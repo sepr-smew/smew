@@ -43,7 +43,7 @@ public class SmewFighters extends Game {
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
         //camera.setToOrtho(false);
-        viewport = new FitViewport(512, 320, camera);
+        viewport = new FitViewport(128, 80, camera);
         //this.setScreen(new StartupScreen(this));
         this.setScreen(new RoundScreen(this));
     }

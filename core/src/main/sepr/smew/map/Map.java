@@ -32,7 +32,7 @@ public class Map {
     
     private float tileWidth;
     private float tileHeight;
-    private float scale= 0.25f;
+    private float scale= 1/16f;
     
     Box2DDebugRenderer debugRenderer;
     Matrix4 debugMatrix;

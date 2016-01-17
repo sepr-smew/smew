@@ -14,8 +14,7 @@ import sepr.smew.util.Anim;
  */
 public class SmewEntity extends Entity {
     public SmewEntity(World world) {
-        this.add(new TextureComponent());
-        this.add(new BoundsComponent(20, 40));
+        this.add(new TextureComponent(5, 10));
         
         Animation[] anims = new Animation[]{
         Anim.loadAnimation("Sprites/Smew/Smew_back_spritesheet.png", 1, 9, 0.1f),
@@ -25,7 +24,7 @@ public class SmewEntity extends Entity {
         };
         
         this.add(new DirectionalSpritesheetComponent(anims));
-        this.add(PhysicsComponent.dynamicBox(world, 40, 40, 20, 40));
-        this.add(new SmewMovementComponent(100f));
+        this.add(PhysicsComponent.dynamicBox(world, 20, 20, 5, 10));
+        this.add(new SmewMovementComponent(50f));
     }
 }

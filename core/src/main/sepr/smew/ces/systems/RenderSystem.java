@@ -17,7 +17,6 @@ import sepr.smew.ces.components.*;
  */
 public class RenderSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
-    private ComponentMapper<BoundsComponent>  bm = ComponentMapper.getFor(BoundsComponent.class);
     private ComponentMapper<OverlayComponent> om = ComponentMapper.getFor(OverlayComponent.class);
     private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
 
@@ -25,7 +24,7 @@ public class RenderSystem extends IteratingSystem {
 
     public RenderSystem(int priority, Batch gameBatch) {
         super(Family
-            .all(TextureComponent.class, BoundsComponent.class)
+            .all(TextureComponent.class)
             .one(PhysicsComponent.class, OverlayComponent.class)
             .get(), priority);
         batch = gameBatch;
@@ -43,15 +42,8 @@ public class RenderSystem extends IteratingSystem {
         // TODO(avinashbot): Don't subclass IteratingSystem and render all
         //                   physics components before overlay components.
         TextureComponent tc = tm.get(entity);
-        BoundsComponent bc = bm.get(entity);
-        if (pm.has(entity)) {
-            PhysicsComponent pc = pm.get(entity);
-            Vector2 pos = pc.getBottomLeft();
-            batch.draw(tc.textureRegion, pos.x, pos.y, bc.width, bc.height);
-        }
-        else {
-            OverlayComponent oc = om.get(entity);
-            batch.draw(tc.textureRegion, oc.x, oc.y, bc.width, bc.height);
-        }
+        
+        Vector2 position = pm.has(entity) ? pm.get(entity).getBottomLeft() : om.get(entity).getPosition();
+        tc.draw(batch, position);
     }
 }

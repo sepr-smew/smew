@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Array;
 /**
  * Controls the various animations that the Entity can perform.
  */
-public class SpritesheetComponent implements SpritesheetComponentInterface {
+public class SpritesheetComponent implements BaseSpritesheetComponent {
     public Animation animation;
     public float stateTime;
 

@@ -13,23 +13,22 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 /**
  * Stores and animates the keyframes associated with the spritesheet.
  */
-public class SpritesheetSystem extends IteratingSystem {
-    private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
-    private ComponentMapper<SpritesheetComponent> sm = ComponentMapper.getFor(SpritesheetComponent.class);
+public class DirectionalSpritesheetSystem extends IteratingSystem {
+    private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
     private ComponentMapper<DirectionalSpritesheetComponent> dsm = ComponentMapper.getFor(DirectionalSpritesheetComponent.class);
+    private final Vector2 reference = new Vector2(0, -1);
+    private final Vector2 bias = new Vector2(1.5f, 1);
 
-    public SpritesheetSystem(int priority) {
-        super(Family.all(TextureComponent.class).one(DirectionalSpritesheetComponent.class, SpritesheetComponent.class).get(), priority);
+    public DirectionalSpritesheetSystem(int priority) {
+        super(Family.all(PhysicsComponent.class, DirectionalSpritesheetComponent.class).get(), priority);
     }
 
     @Override
     public void processEntity(Entity entity, float deltaTime) {
-        TextureComponent tc = tm.get(entity);
-        BaseSpritesheetComponent sc;
-        sc = (BaseSpritesheetComponent) (sm.has(entity)? sm.get(entity) : dsm.get(entity));
+        PhysicsComponent pc = pm.get(entity);
+        DirectionalSpritesheetComponent dsc = dsm.get(entity);
     
-        sc.advance(deltaTime);
-        tc.textureRegion = sc.currentFrame();
+        dsc.angle =  pc.body.getLinearVelocity().scl(bias).angle(reference);
     
     }
 }
