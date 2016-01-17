@@ -50,6 +50,7 @@ public class RoundScreen extends AbstractScreen {
         engine.addEntity(cameraEntity);
         
         SpritesheetSystem spritesheetSystem = new SpritesheetSystem(1);
+        DirectionalSpritesheetSystem dSpritesheetSystem = new DirectionalSpritesheetSystem(1);
 
         SmewMovementSystem smewMovementSystem = new SmewMovementSystem(2);
         Gdx.input.setInputProcessor(smewMovementSystem.inputProcessor);
@@ -62,6 +63,7 @@ public class RoundScreen extends AbstractScreen {
         
         
         engine.addSystem(spritesheetSystem);
+        engine.addSystem(dSpritesheetSystem);
         engine.addSystem(smewMovementSystem);
         engine.addSystem(cameraMovementSystem);
         engine.addSystem(mapRenderSystem);

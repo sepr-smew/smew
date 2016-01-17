@@ -15,17 +15,26 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class SpritesheetSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
-    private ComponentMapper<SpritesheetComponent> sprm = ComponentMapper.getFor(SpritesheetComponent.class);
+    private ComponentMapper<SpritesheetComponent> sm = ComponentMapper.getFor(SpritesheetComponent.class);
+    private ComponentMapper<DirectionalSpritesheetComponent> dsm = ComponentMapper.getFor(DirectionalSpritesheetComponent.class);
 
     public SpritesheetSystem(int priority) {
-        super(Family.all(TextureComponent.class, SpritesheetComponent.class).get(), priority);
+        super(Family.all(TextureComponent.class).one(DirectionalSpritesheetComponent.class, SpritesheetComponent.class).get(), priority);
     }
 
     @Override
     public void processEntity(Entity entity, float deltaTime) {
         TextureComponent tc = tm.get(entity);
-        SpritesheetComponent sprc = sprm.get(entity);
-        sprc.stateTime += deltaTime;
-        tc.textureRegion = sprc.currentFrame();
+        SpritesheetComponentInterface sc;
+        if (sm.has(entity)){
+            sc = (SpritesheetComponentInterface)sm.get(entity);
+        }
+        else {  // dsm.has(entity)
+            sc = (SpritesheetComponentInterface)dsm.get(entity);
+        }
+    
+        sc.advance(deltaTime);
+        tc.textureRegion = sc.currentFrame();
+    
     }
 }
