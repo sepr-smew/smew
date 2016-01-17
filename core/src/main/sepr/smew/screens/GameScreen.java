@@ -7,9 +7,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import sepr.smew.SmewFighters;
+import sepr.smew.ecs.entities.EnemyEntity;
 import sepr.smew.ecs.entities.PointsEntity;
 import sepr.smew.ecs.entities.SmewEntity;
 import sepr.smew.ecs.systems.DisplaySystem;
+import sepr.smew.ecs.systems.EnemySystem;
 import sepr.smew.ecs.systems.SmewMovementSystem;
 import sepr.smew.util.TileMapManager;
 
@@ -36,9 +38,14 @@ public class GameScreen extends AbstractScreen {
         Gdx.input.setInputProcessor(sms.inputProcessor);
         e.addSystem(sms);
 
-        e.addSystem(new DisplaySystem(2, game.viewport, game.batch));
+        SmewEntity smew = new SmewEntity(world);
+        e.addSystem(new EnemySystem(2, smew));
 
-        e.addEntity(new SmewEntity(world));
+        e.addSystem(new DisplaySystem(3, game.viewport, game.batch));
+
+        e.addEntity(smew);
+
+        e.addEntity(new EnemyEntity(world, 40, 40));
 
         e.addEntity(new PointsEntity());
     }

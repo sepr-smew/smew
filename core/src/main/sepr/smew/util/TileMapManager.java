@@ -10,7 +10,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
- * Let me tell you this in advance. Tile map physics is concept brewed in
+ * Let me tell you this in advance. Tile map physics is a concept brewed in
  * hell's deepest crevices. You have James to thank for this class.
  */
 public class TileMapManager {

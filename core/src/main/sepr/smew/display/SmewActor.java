@@ -1,6 +1,7 @@
 package sepr.smew.display;
 
 import com.badlogic.ashley.core.ComponentMapper;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
