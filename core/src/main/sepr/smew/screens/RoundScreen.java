@@ -96,7 +96,7 @@ public class RoundScreen extends AbstractScreen {
     public void render(float deltaTime) {
         world.step(deltaTime, 6, 2); // NOTE(avinashbot): Prefer a fixed step?
         super.render(deltaTime);
-        debugMatrix=new Matrix4(camera.combined);
-        debugRenderer.render(world, debugMatrix);
+        //debugMatrix=new Matrix4(camera.combined);
+        //debugRenderer.render(world, debugMatrix);
     }
 }
