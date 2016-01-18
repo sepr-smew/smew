@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" nextobjectid="49">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" nextobjectid="54">
  <tileset firstgid="1" name="stone_small2" tilewidth="128" tileheight="128" tilecount="4">
   <image source="stone_small2.jpg" width="256" height="256"/>
   <tile id="1">
@@ -11,9 +11,9 @@
    </objectgroup>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="68" height="44">
+ <layer name="tiles" width="68" height="44">
   <data encoding="base64" compression="zlib">
-   eJztlkuOwzAMQ5NO7n/mdtECgkFKdvyRB+HiAZlg4so0Ret1HMdLCCGEEEIIIYQQYiDnh+vLuUE92VqUelwb1JXBBXiyHtYb5XN2bVn+KHV4uh62TyzZtWVS9kx2PdlYn2TXsgNPv1eQHrv5o8x3lHHoLii/j9ZAswb6m323Kl/YLODNTLY2pAd7rtEazawrM9f7bXRmpb/Z3YnWss+1Z8XWWdHD7GwQNd97vdLqX7TWbD1QljB9/r6wfPH81qoH0neWR2p8jt799PByxnvfUuPK2b52/1GeMo8xnVvrRBqv7BfvjrH78foFZWlrfiA97q7Rw68fdltvtj/+mx7WZzP2HeVFND+09Jr9v556Z+oRzYZR/6McZt+NuBtW6IE08eZo5g/kNabX3XNjvzG6X7zZAz3b+cO7q9k+7p4bq220Hi37OoEezCPMKz0+Rv4dqUfU62iv6Ny8HO71N6qnR98aH0aeQFnG8je6o3p7e9ZMhvZa8w6dW5Q5M/pdzOMNcmsY2Q==
+   eJztVkuug0AMg5b7n7ldgDRCtpMwzAeUhfVaKLyJY8f5LMvySSQSiUQikUgkEq/C+se2/12L75vxGX1H79gmqDECxAWq73xvI9cQd6NrrOGD9di6d+bhyfpAPVY8KC0hjkbXGAHjgXGC6rX0NbrGqD6UFzx6QZ4pfzO6xqg+PBnhyZI36cOjEytP2HOja4zqw5uzXu7ekLcsL9XewbLmyfmidlHvXqLmzJP9ovrNdIQ4Gl3TDCh5Gn2WGTCjPjw5gGbe+fmrWcK8hHzXgw/lfZUbig8rOxTXaPaU93ppVs07tT+yPdSatd5esff08DDrDYLneeWVqH57ZZLyhPL8d4e1k9bmK/JZS414dI6uHXyoOaOuR87Yc4f11m/NU6YxxnP0nIjjnn5RGVPWo/yCZml0fiA+rr6jBocfZntfa308jY9SZy3qtuaFtT9EvFb+rua8LfmwdkPL/2gOs+fuyIYefCBO1B7N9IG0xvi62jf2P+72i9o90Ody/1BZzeq42jd2trv5iNS1Aj6YRphWanSM9HsnH5bXUa2ob2oO1+obnaeGX48OLU2gWcbmr5VRtd5utZOhWj3XUN+smdPC74l2+AGaABk9
   </data>
  </layer>
  <objectgroup name="collision">
@@ -44,11 +44,15 @@
   <object id="42" x="5736" y="3176" width="416" height="256"/>
   <object id="43" x="5648" y="3112" width="192" height="200"/>
   <object id="44" x="4488" y="2984" width="1152" height="192"/>
+  <object id="50" x="5000" y="1280" width="200" height="1688"/>
+  <object id="51" x="1616" y="1248" width="3392" height="144"/>
+  <object id="52" x="1584" y="1384" width="192" height="1680"/>
+  <object id="53" x="1792" y="2952" width="2296" height="184"/>
  </objectgroup>
  <objectgroup color="#3d3dff" name="rooms">
   <object id="27" x="0" y="3072" width="2048" height="1280"/>
   <object id="45" x="5240" y="4552" width="1512" height="1064"/>
-  <object id="46" x="3600" y="1752" width="1504" height="1264"/>
+  <object id="46" x="1616" y="1264" width="3488" height="1752"/>
   <object id="48" x="2048" y="3064" width="2048" height="1280"/>
  </objectgroup>
 </map>
