@@ -4,6 +4,7 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture;
@@ -19,15 +20,15 @@ public class RenderSystem extends IteratingSystem {
     private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
     private ComponentMapper<OverlayComponent> om = ComponentMapper.getFor(OverlayComponent.class);
     private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
-
+    
     private final Batch batch;
 
-    public RenderSystem(int priority, Batch gameBatch) {
+    public RenderSystem(int priority, Batch batch) {
         super(Family
             .all(TextureComponent.class)
             .one(PhysicsComponent.class, OverlayComponent.class)
             .get(), priority);
-        batch = gameBatch;
+        this.batch = batch;
     }
 
     @Override

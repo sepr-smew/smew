@@ -50,7 +50,7 @@ public class RoundScreen extends AbstractScreen {
         batch = new SpriteBatch();
         
         //map = new Map("Maps/test1.tmx", world, batch, game.camera);
-        map = new TileMapManager("Maps/test1.tmx", batch, game.camera);
+        map = new TileMapManager("Maps/test1.tmx", batch);
         map.generateTileCollision(world);
         
         //MapEntity mapEntity = map.entity();
@@ -69,7 +69,7 @@ public class RoundScreen extends AbstractScreen {
         SpritesheetSystem spritesheetSystem = new SpritesheetSystem(1);
         DirectionalSpritesheetSystem dSpritesheetSystem = new DirectionalSpritesheetSystem(1);
         CameraMovementSystem cameraMovementSystem = new CameraMovementSystem(2);
-        MapRenderSystem mapRenderSystem = new MapRenderSystem(2);
+        MapRenderSystem mapRenderSystem = new MapRenderSystem(2, batch, camera);
         RenderSystem renderSystem = new RenderSystem(3, batch);
         
         engine.addSystem(spritesheetSystem);

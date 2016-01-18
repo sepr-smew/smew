@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import sepr.smew.ces.components.*;
 
 import sepr.smew.util.*;
@@ -18,18 +19,22 @@ import sepr.smew.util.*;
  */
 public class MapRenderSystem extends IteratingSystem {
     private ComponentMapper<MapComponent> mm = ComponentMapper.getFor(MapComponent.class);
+    OrthographicCamera camera;
+    private final Batch batch;
 
-
-    public MapRenderSystem(int priority) {
+    public MapRenderSystem(int priority, Batch batch, OrthographicCamera camera) {
         super(Family
             .all(MapComponent.class)
             .get(), priority);
+        this.batch = batch;
+        this.camera = camera;
     }
 
     @Override
     public void processEntity(Entity entity, float deltaTime) {
         MapComponent mc = mm.get(entity);
-        TileMapManager map = mc.map;
-        map.render();
+        batch.begin();
+        mc.render(camera);
+        batch.end();
     }
 }

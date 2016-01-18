@@ -24,13 +24,11 @@ public class TileMapManager {
     private MapLayer roomsLayer;
     private OrthogonalTiledMapRenderer renderer;
     private Batch batch;
-    private OrthographicCamera camera;
     private float scale = 1/16f;
     public ArrayList<RoomBound> roomBounds = new ArrayList<RoomBound>();
 
-    public TileMapManager(String filename, Batch batch, OrthographicCamera camera) {
+    public TileMapManager(String filename, Batch batch) {
         this.batch     = batch;
-        this.camera    = camera;
         map            = new TmxMapLoader().load(filename);
         mapLayer       = (TiledMapTileLayer) map.getLayers().get(0);
         MapLayers layers = map.getLayers();
@@ -83,10 +81,8 @@ public class TileMapManager {
         shape.dispose();
     }
 
-    public void render() {
+    public void render(OrthographicCamera camera) {
         renderer.setView(camera);
-        batch.begin();
         renderer.renderTileLayer(mapLayer);
-        batch.end();
     }
 }
