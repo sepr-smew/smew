@@ -24,7 +24,7 @@ public class TileMapManager {
     private MapLayer roomsLayer;
     private OrthogonalTiledMapRenderer renderer;
     private Batch batch;
-    private float scale = 1/16f;
+    private float scale = 1/6f;
     public ArrayList<RoomBound> roomBounds = new ArrayList<RoomBound>();
 
     public TileMapManager(String filename, Batch batch) {
@@ -83,6 +83,9 @@ public class TileMapManager {
 
     public void render(OrthographicCamera camera) {
         renderer.setView(camera);
-        renderer.renderTileLayer(mapLayer);
+        //renderer.renderTileLayer(mapLayer);
+        batch.end();
+        renderer.render();
+        batch.begin();
     }
 }

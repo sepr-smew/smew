@@ -8,10 +8,10 @@ import com.badlogic.gdx.math.Vector2;
  * top of it, like a UI object or something.
  */
 public class OverlayComponent implements Component {
-    public int x;
-    public int y;
+    public float x;
+    public float y;
 
-    public OverlayComponent(int x, int y) {
+    public OverlayComponent(float x, float y) {
         this.x = x;
         this.y = y;
     }

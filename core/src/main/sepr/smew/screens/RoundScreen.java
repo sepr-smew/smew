@@ -33,8 +33,10 @@ public class RoundScreen extends AbstractScreen {
     public TileMapManager map;
     //public Engine engine;
     public Batch batch;
+    public Batch UIBatch;
     public World world;
     public OrthographicCamera camera;
+    public OrthographicCamera UICamera;
     
     Box2DDebugRenderer debugRenderer;
     Matrix4 debugMatrix;
@@ -43,25 +45,30 @@ public class RoundScreen extends AbstractScreen {
     public RoundScreen(final SmewFighters game) {
         super(game);
         
-        camera = game.camera;
+        camera = new OrthographicCamera(game.viewport.getWorldWidth(), game.viewport.getWorldHeight());
+        UICamera = game.camera;
         
         world = new World(Vector2.Zero, true);
         
         batch = new SpriteBatch();
+        UIBatch = new SpriteBatch();
         
         //map = new Map("Maps/test1.tmx", world, batch, game.camera);
-        map = new TileMapManager("Maps/test1.tmx", batch);
+        //map = new TileMapManager("Maps/test1.tmx", batch);
+        map = new TileMapManager("Maps/SmewMapEdited.tmx", batch);
         map.generateTileCollision(world);
         
         //MapEntity mapEntity = map.entity();
         MapEntity mapEntity = new MapEntity(map);
         SmewEntity smew = new SmewEntity(world);
+        StatsEntity stats = new StatsEntity();
         EnemyEntity enemy = new EnemyEntity(world, 80f, 70f);
         //CameraEntity cameraEntity = new CameraEntity(camera, 128f, 80f);
         CameraEntity cameraEntity = new CameraEntity(camera);
         
         engine.addEntity(mapEntity);
         engine.addEntity(smew);
+        engine.addEntity(stats);
         engine.addEntity(enemy);
         engine.addEntity(cameraEntity);
         
@@ -69,13 +76,12 @@ public class RoundScreen extends AbstractScreen {
         SpritesheetSystem spritesheetSystem = new SpritesheetSystem(1);
         DirectionalSpritesheetSystem dSpritesheetSystem = new DirectionalSpritesheetSystem(1);
         CameraMovementSystem cameraMovementSystem = new CameraMovementSystem(2);
-        MapRenderSystem mapRenderSystem = new MapRenderSystem(2, batch, camera);
-        RenderSystem renderSystem = new RenderSystem(3, batch);
+        StatsSystem statsSystem = new StatsSystem(2, stats);
+        RenderSystem renderSystem = new RenderSystem(3, batch, UIBatch,camera, UICamera);
         
         engine.addSystem(spritesheetSystem);
         engine.addSystem(dSpritesheetSystem);
         engine.addSystem(cameraMovementSystem);
-        engine.addSystem(mapRenderSystem);
         engine.addSystem(renderSystem);
         
         // movement

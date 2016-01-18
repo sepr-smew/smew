@@ -13,6 +13,7 @@ import sepr.smew.util.Anim;
  * The one and only Smew! Controlled with the keyboard.
  */
 public class SmewEntity extends Entity {
+        
     public SmewEntity(World world) {
         this.add(new TextureComponent(5, 10));
         
