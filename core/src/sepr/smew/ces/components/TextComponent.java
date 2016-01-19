@@ -8,6 +8,9 @@ import com.badlogic.gdx.math.Vector2;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 //import com.badlogic.gdx.graphics.g2d.freetype.*;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.*;
 
 
 /**
@@ -18,15 +21,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 public class TextComponent implements DrawableComponent {
     private BitmapFont font;
     public String text;
-    private float scale = 0.5f;
+    private float scale = 0.1f;
     
     public TextComponent(){        
-        //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/myfont.ttf"));
-        //FreeTypeFontParameter parameter = new FreeTypeFontParameter();
-        //parameter.size = 12;
-        //BitmapFont font12 = generator.generateFont(parameter); // font size 12 pixels
-        //generator.dispose();
-        font = new BitmapFont();
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Lato-Regular.ttf"));
+        FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+        parameter.size = 40;
+        font = generator.generateFont(parameter);
+        generator.dispose();
         font.getData().setScale(scale, scale);
         this.text="";
     }

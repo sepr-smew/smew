@@ -36,6 +36,7 @@ public class StatsSystem extends EntitySystem{
 
     @Override
     public void update(float deltaTime) {
-        tm.get(statsEntity).text="HEALTH";
+        statsEntity.setHealthText("×5");
+        statsEntity.setPointsText("053");
     }
 }

@@ -30,6 +30,7 @@ public class RenderSystem extends SortedIteratingSystem {
     private static ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
     private static ComponentMapper<MapLayerComponent> mm = ComponentMapper.getFor(MapLayerComponent.class);
     private static ComponentMapper<RenderPriorityComponent> rpm = ComponentMapper.getFor(RenderPriorityComponent.class);
+    private static ComponentMapper<CompositeDrawableComponent> cdm = ComponentMapper.getFor(CompositeDrawableComponent.class);
     
     private final Batch batch;
     private final Batch UIBatch;
@@ -47,7 +48,7 @@ public class RenderSystem extends SortedIteratingSystem {
 
     public RenderSystem(int priority, Batch batch, Batch UIBatch, OrthographicCamera camera, OrthographicCamera UICamera) {
         super(Family
-            .one(MapLayerComponent.class, TextureComponent.class, TextComponent.class)
+            .one(MapLayerComponent.class, TextureComponent.class, TextComponent.class, CompositeDrawableComponent.class)
             .one(MapLayerComponent.class, PhysicsComponent.class, OverlayComponent.class) //NOT AN ERROR
             // If it has a map component, it does not need a phys or overlay one.
             .get(), comparator, priority);
@@ -95,7 +96,8 @@ public class RenderSystem extends SortedIteratingSystem {
             mm.get(entity).render(camera);
         }
         else {
-            DrawableComponent dc = tm.has(entity) ? tm.get(entity) : txm.get(entity);
+            DrawableComponent dc = tm.has(entity)  ? tm.get(entity) :
+                                  (txm.has(entity) ? txm.get(entity) : cdm.get(entity));
             Vector2 position;
             Batch b;
             if (pm.has(entity)){

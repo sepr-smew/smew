@@ -7,17 +7,37 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import sepr.smew.ces.components.*;
-import sepr.smew.util.Anim;
+import com.badlogic.gdx.graphics.Color;
 
 /**
  * The one and only Smew! Controlled with the keyboard.
  */
 public class StatsEntity extends Entity {
-        
+    TextComponent healthText;
+    TextComponent pointsText;
+    
     public StatsEntity() {
-        this.add(new TextComponent());
-        this.add(new OverlayComponent(20, 20));
+        CompositeDrawableComponent com = new CompositeDrawableComponent();
+        healthText = new TextComponent();
+        pointsText = new TextComponent();
+        
+        com.add(new ShapeComponent(new Color(0f, 0f, 0f, 0.3f), 28, 6), -3f, -4.5f);
+        com.add(healthText, 6, 0);
+        com.add(new TextureComponent("Heart.png", 5, 5), 0, -4);
+        com.add(pointsText, 15, 0);
+        
+        this.add(com);
+        this.add(new OverlayComponent(5, 78));
         this.add(new RenderPriorityComponent(4));
     }
+    
+    public void setHealthText(String str){
+        healthText.text = str;
+    }
+    
+    public void setPointsText(String str){
+        pointsText.text = str;
+    }
+    
     
 }
