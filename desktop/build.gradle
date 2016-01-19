@@ -44,7 +44,3 @@ task afterEclipseImport(description: "Post processing after project generation",
     printer.print(classpath)
   }
 }
-
-dependencies {
-    compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-}

@@ -7,7 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-//import com.badlogic.gdx.graphics.g2d.FreeType;
+//import com.badlogic.gdx.graphics.g2d.freetype.*;
+
 
 /**
  * Contains the actual texture that will be rendered. Add a texture if your
