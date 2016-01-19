@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+//import com.badlogic.gdx.graphics.g2d.FreeType;
 
 /**
  * Contains the actual texture that will be rendered. Add a texture if your
@@ -14,10 +15,18 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
  * TextureComponent.
  */ 
 public class TextComponent implements DrawableComponent {
-    private BitmapFont font = new BitmapFont();
+    private BitmapFont font;
     public String text;
+    private float scale = 0.5f;
     
-    public TextComponent(){
+    public TextComponent(){        
+        //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/myfont.ttf"));
+        //FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+        //parameter.size = 12;
+        //BitmapFont font12 = generator.generateFont(parameter); // font size 12 pixels
+        //generator.dispose();
+        font = new BitmapFont();
+        font.getData().setScale(scale, scale);
         this.text="";
     }
     public TextComponent(String text){

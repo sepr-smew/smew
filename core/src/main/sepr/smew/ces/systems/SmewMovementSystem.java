@@ -21,8 +21,8 @@ import sepr.smew.ces.components.*;
  * Deals with detecting keyboard input and moving the smew accordingly.
  */
 public class SmewMovementSystem extends IteratingSystem {
-    private ComponentMapper<SmewMovementComponent> kcm = ComponentMapper.getFor(SmewMovementComponent.class);
-    private ComponentMapper<PhysicsComponent> phym = ComponentMapper.getFor(PhysicsComponent.class);
+    private static ComponentMapper<SmewMovementComponent> kcm = ComponentMapper.getFor(SmewMovementComponent.class);
+    private static ComponentMapper<PhysicsComponent> phym = ComponentMapper.getFor(PhysicsComponent.class);
 
     private Vector2 direction = Vector2.Zero.cpy();
     private ArrayList<Integer> pressedKeys = new ArrayList<Integer>();

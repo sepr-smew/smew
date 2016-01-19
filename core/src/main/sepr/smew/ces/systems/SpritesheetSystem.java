@@ -14,9 +14,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * Stores and animates the keyframes associated with the spritesheet.
  */
 public class SpritesheetSystem extends IteratingSystem {
-    private ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
-    private ComponentMapper<SpritesheetComponent> sm = ComponentMapper.getFor(SpritesheetComponent.class);
-    private ComponentMapper<DirectionalSpritesheetComponent> dsm = ComponentMapper.getFor(DirectionalSpritesheetComponent.class);
+    private static ComponentMapper<TextureComponent> tm = ComponentMapper.getFor(TextureComponent.class);
+    private static ComponentMapper<SpritesheetComponent> sm = ComponentMapper.getFor(SpritesheetComponent.class);
+    private static ComponentMapper<DirectionalSpritesheetComponent> dsm = ComponentMapper.getFor(DirectionalSpritesheetComponent.class);
 
     public SpritesheetSystem(int priority) {
         super(Family.all(TextureComponent.class).one(DirectionalSpritesheetComponent.class, SpritesheetComponent.class).get(), priority);

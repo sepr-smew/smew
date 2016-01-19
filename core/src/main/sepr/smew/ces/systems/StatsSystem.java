@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 
 public class StatsSystem extends EntitySystem{
-    private ComponentMapper<TextComponent> tm = ComponentMapper.getFor(TextComponent.class);
+    private static ComponentMapper<TextComponent> tm = ComponentMapper.getFor(TextComponent.class);
     
     private StatsEntity statsEntity;
 

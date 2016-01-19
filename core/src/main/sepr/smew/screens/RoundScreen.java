@@ -46,7 +46,9 @@ public class RoundScreen extends AbstractScreen {
         super(game);
         
         camera = new OrthographicCamera(game.viewport.getWorldWidth(), game.viewport.getWorldHeight());
-        UICamera = game.camera;
+        UICamera = new OrthographicCamera(game.viewport.getWorldWidth(), game.viewport.getWorldHeight());
+        UICamera.setToOrtho(false, game.viewport.getWorldWidth(), game.viewport.getWorldHeight());
+        //UICamera = game.camera;
         
         world = new World(Vector2.Zero, true);
         
@@ -58,15 +60,17 @@ public class RoundScreen extends AbstractScreen {
         map = new TileMapManager("Maps/SmewMapEdited.tmx", batch);
         map.generateTileCollision(world);
         
+        for (MapLayerEntity e : map.getEntities()){
+            engine.addEntity(e);
+        }
+        
         //MapEntity mapEntity = map.entity();
-        MapEntity mapEntity = new MapEntity(map);
         SmewEntity smew = new SmewEntity(world);
         StatsEntity stats = new StatsEntity();
         EnemyEntity enemy = new EnemyEntity(world, 80f, 70f);
         //CameraEntity cameraEntity = new CameraEntity(camera, 128f, 80f);
         CameraEntity cameraEntity = new CameraEntity(camera);
         
-        engine.addEntity(mapEntity);
         engine.addEntity(smew);
         engine.addEntity(stats);
         engine.addEntity(enemy);
@@ -75,13 +79,14 @@ public class RoundScreen extends AbstractScreen {
         // graphics related systems
         SpritesheetSystem spritesheetSystem = new SpritesheetSystem(1);
         DirectionalSpritesheetSystem dSpritesheetSystem = new DirectionalSpritesheetSystem(1);
-        CameraMovementSystem cameraMovementSystem = new CameraMovementSystem(2);
+        CameraMovementSystem cameraMovementSystem = new CameraMovementSystem(2, map);
         StatsSystem statsSystem = new StatsSystem(2, stats);
-        RenderSystem renderSystem = new RenderSystem(3, batch, UIBatch,camera, UICamera);
+        RenderSystem renderSystem = new RenderSystem(3, batch, UIBatch, camera, UICamera);
         
         engine.addSystem(spritesheetSystem);
         engine.addSystem(dSpritesheetSystem);
         engine.addSystem(cameraMovementSystem);
+        engine.addSystem(statsSystem);
         engine.addSystem(renderSystem);
         
         // movement

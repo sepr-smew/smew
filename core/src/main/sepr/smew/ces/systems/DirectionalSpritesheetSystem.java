@@ -14,8 +14,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * Stores and animates the keyframes associated with the spritesheet.
  */
 public class DirectionalSpritesheetSystem extends IteratingSystem {
-    private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
-    private ComponentMapper<DirectionalSpritesheetComponent> dsm = ComponentMapper.getFor(DirectionalSpritesheetComponent.class);
+    private static ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
+    private static ComponentMapper<DirectionalSpritesheetComponent> dsm = ComponentMapper.getFor(DirectionalSpritesheetComponent.class);
     private final Vector2 reference = new Vector2(0, -1);
     private final Vector2 bias = new Vector2(1.5f, 1);
 

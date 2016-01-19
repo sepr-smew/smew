@@ -18,6 +18,7 @@ import sepr.smew.util.Anim;
         this.add(PhysicsComponent.dynamicBox(world, x, y, 12, 12));
         this.add(new EnemyComponent());
         this.add(new TextureComponent("Sprites/Goose/Goose_sprite.png", 12, 12));
+        this.add(new RenderPriorityComponent(1));
         //this.add(new DirectionalSpritesheetComponent(anims)); // when we have goose spritesheets.
     }
 }

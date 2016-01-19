@@ -11,6 +11,10 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.math.Vector2;
 
+import com.badlogic.gdx.utils.Array;
+
+import sepr.smew.ces.entities.*;
+
 import java.util.ArrayList;
 
 /**
@@ -22,18 +26,20 @@ public class TileMapManager {
     private TiledMapTileLayer mapLayer;
     private MapLayer collisionLayer;
     private MapLayer roomsLayer;
+    //private MapLayer ceilingLayer;
     private OrthogonalTiledMapRenderer renderer;
     private Batch batch;
     private float scale = 1/6f;
     public ArrayList<RoomBound> roomBounds = new ArrayList<RoomBound>();
+    MapLayers layers;
 
     public TileMapManager(String filename, Batch batch) {
         this.batch     = batch;
         map            = new TmxMapLoader().load(filename);
-        mapLayer       = (TiledMapTileLayer) map.getLayers().get(0);
-        MapLayers layers = map.getLayers();
+        layers         = map.getLayers();
         collisionLayer = layers.get("collision");
         roomsLayer     = layers.get("rooms");
+        //ceilingLayer     = layers.get("ceiling");
         renderer       = new OrthogonalTiledMapRenderer(map, scale, batch);
         
         if (roomsLayer != null){
@@ -52,6 +58,17 @@ public class TileMapManager {
             }
         }
         
+    }
+    
+    public ArrayList<MapLayerEntity> getEntities(){
+            ArrayList<MapLayerEntity> entities = new ArrayList<MapLayerEntity>();
+            
+            for (TiledMapTileLayer l : layers.getByType(TiledMapTileLayer.class)){
+                    entities.add(new MapLayerEntity(renderer, l,
+                    Integer.parseInt(l.getProperties().get("renderPriority", "0", String.class))
+                    ));
+            }
+            return entities;
     }
 
     public void generateTileCollision(World world) {
@@ -79,13 +96,5 @@ public class TileMapManager {
         }
 
         shape.dispose();
-    }
-
-    public void render(OrthographicCamera camera) {
-        renderer.setView(camera);
-        //renderer.renderTileLayer(mapLayer);
-        batch.end();
-        renderer.render();
-        batch.begin();
     }
 }

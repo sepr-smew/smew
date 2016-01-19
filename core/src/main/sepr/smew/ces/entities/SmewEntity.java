@@ -27,5 +27,6 @@ public class SmewEntity extends Entity {
         this.add(new DirectionalSpritesheetComponent(anims));
         this.add(PhysicsComponent.dynamicBox(world, 20, 20, 5, 10));
         this.add(new SmewMovementComponent(50f));
+        this.add(new RenderPriorityComponent(1));
     }
 }

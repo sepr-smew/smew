@@ -15,8 +15,9 @@ import sepr.smew.util.Anim;
 public class StatsEntity extends Entity {
         
     public StatsEntity() {
-        this.add(new TextComponent("HEEEY"));
-        this.add(new OverlayComponent(10, 10));
+        this.add(new TextComponent());
+        this.add(new OverlayComponent(20, 20));
+        this.add(new RenderPriorityComponent(4));
     }
     
 }

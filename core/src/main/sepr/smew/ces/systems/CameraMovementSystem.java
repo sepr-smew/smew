@@ -24,20 +24,22 @@ import java.util.ArrayList;
 
 
 public class CameraMovementSystem extends EntitySystem implements EntityListener {
-    private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
-    private ComponentMapper<CameraComponent> cm = ComponentMapper.getFor(CameraComponent.class);
-    private ComponentMapper<MapComponent> mm = ComponentMapper.getFor(MapComponent.class);
+    private static ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
+    private static ComponentMapper<CameraComponent> cm = ComponentMapper.getFor(CameraComponent.class);
+    private static ComponentMapper<MapLayerComponent> mm = ComponentMapper.getFor(MapLayerComponent.class);
     
     private CameraEntity cameraEntity;
     private SmewEntity smewEntity;
-    private MapEntity mapEntity;
 
     protected Engine engine;
     private RoomBound currentBound;
+    
+    private TileMapManager map;
 
-    public CameraMovementSystem(int priority) {
+    public CameraMovementSystem(int priority, TileMapManager map) {
         super(priority);
         this.currentBound = null;
+        this.map = map;
     }
     
     @Override
@@ -53,11 +55,10 @@ public class CameraMovementSystem extends EntitySystem implements EntityListener
     private void fetchEntities(){
 		cameraEntity = (CameraEntity) getEntity(Family.all(CameraComponent.class)      .get());
 		smewEntity   = (SmewEntity)   getEntity(Family.all(SmewMovementComponent.class).get());
-		mapEntity    = (MapEntity)    getEntity(Family.all(MapComponent.class)         .get());
 	}
     
     private boolean ensureEntities(){
-        return (cameraEntity != null && smewEntity != null && mapEntity != null);
+        return (cameraEntity != null && smewEntity != null);
     }
     
     private Entity getEntity(Family family){
@@ -77,9 +78,7 @@ public class CameraMovementSystem extends EntitySystem implements EntityListener
         
         CameraComponent cameraComponent        = cm.get(cameraEntity);
         PhysicsComponent smewPhysicsComponent  = pm.get(smewEntity);
-        MapComponent mapComponent              = mm.get(mapEntity);
         
-        TileMapManager map = mapComponent.map;
         ArrayList<RoomBound> roomBounds = map.roomBounds;
         OrthographicCamera camera = cameraComponent.camera;
         

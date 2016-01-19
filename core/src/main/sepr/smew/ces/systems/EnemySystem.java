@@ -15,8 +15,8 @@ import sepr.smew.ces.entities.SmewEntity;
  * Moves enemies towards the smew.
  */
 public class EnemySystem extends IteratingSystem { // not enemy movement system as this will handle collisions too.
-    private ComponentMapper<EnemyComponent>   em = ComponentMapper.getFor(EnemyComponent.class);
-    private ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
+    private static ComponentMapper<EnemyComponent>   em = ComponentMapper.getFor(EnemyComponent.class);
+    private static ComponentMapper<PhysicsComponent> pm = ComponentMapper.getFor(PhysicsComponent.class);
 
     private SmewEntity smew;
 
