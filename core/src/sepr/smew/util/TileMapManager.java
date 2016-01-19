@@ -42,7 +42,7 @@ public class TileMapManager {
         layers         = map.getLayers();
         collisionLayer = layers.get("collision");
         roomsLayer     = layers.get("rooms");
-        enemiesLayer     = layers.get("enemies");
+        enemiesLayer     = layers.get("enemy_spawn");
         //ceilingLayer     = layers.get("ceiling");
         renderer       = new OrthogonalTiledMapRenderer(map, scale, batch);
         
@@ -77,20 +77,23 @@ public class TileMapManager {
     
     public Array<EnemyEntity> generateEnemies(World world){
         Array<EnemyEntity> enemies = new Array<EnemyEntity>();
+        
         if (enemiesLayer != null){
-            MapProperties props = enemiesLayer.getProperties();
-            
-            float x      = scale * props.get("x", Float.class);
-            float y      = scale * props.get("y", Float.class);
-            float width  = scale * props.get("width", Float.class);
-            float height = scale * props.get("height", Float.class);
-            float enemyCount = scale * props.get("enemyCount", Float.class);
-            
-            
-            for (int i = 0; i<enemyCount ; i++){
-                enemies.add(new EnemyEntity(world, x+(float)Math.random()*width, y+(float)Math.random()*height));
+            for (MapObject object : enemiesLayer.getObjects()) {
+                MapProperties props = object.getProperties();
+                
+                float x      = scale * props.get("x", Float.class);
+                float y      = scale * props.get("y", Float.class);
+                float width  = scale * props.get("width", Float.class);
+                float height = scale * props.get("height", Float.class);
+                
+                int enemyCount = new Integer((String)props.get("enemyCount"));
+                
+                
+                for (int i = 0; i<enemyCount ; i++){
+                    enemies.add(new EnemyEntity(world, x+(float)Math.random()*width, y+(float)Math.random()*height));
+                }
             }
-            
         }
         return enemies;
     }

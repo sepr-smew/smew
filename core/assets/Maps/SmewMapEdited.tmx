@@ -303,17 +303,17 @@
  <objectgroup color="#af060e" name="enemy_spawn">
   <object id="26" x="880.551" y="574.273" width="650.842" height="849.923">
    <properties>
-    <property name="enemyCount" value="2"/>
+    <property name="enemyCount" value="4"/>
    </properties>
   </object>
   <object id="28" x="76.5697" y="578.101" width="597.243" height="298.622">
    <properties>
-    <property name="enemyCount" value="1"/>
+    <property name="enemyCount" value=""/>
    </properties>
   </object>
   <object id="29" x="1983.15" y="570.444" width="340.735" height="398.162">
    <properties>
-    <property name="enemyCount" value="3"/>
+    <property name="enemyCount" value="2"/>
    </properties>
   </object>
  </objectgroup>
