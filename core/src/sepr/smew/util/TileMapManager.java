@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import sepr.smew.ces.entities.*;
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 /**
  * Let me tell you this in advance. Tile map physics is concept brewed in
@@ -26,6 +27,7 @@ public class TileMapManager {
     private TiledMapTileLayer mapLayer;
     private MapLayer collisionLayer;
     private MapLayer roomsLayer;
+    private MapLayer enemiesLayer;
     //private MapLayer ceilingLayer;
     private OrthogonalTiledMapRenderer renderer;
     private Batch batch;
@@ -34,11 +36,13 @@ public class TileMapManager {
     MapLayers layers;
 
     public TileMapManager(String filename, Batch batch) {
+        // Godly class yayayayayayyayaayayyy
         this.batch     = batch;
         map            = new TmxMapLoader().load(filename);
         layers         = map.getLayers();
         collisionLayer = layers.get("collision");
         roomsLayer     = layers.get("rooms");
+        enemiesLayer     = layers.get("enemies");
         //ceilingLayer     = layers.get("ceiling");
         renderer       = new OrthogonalTiledMapRenderer(map, scale, batch);
         
@@ -69,6 +73,26 @@ public class TileMapManager {
                     ));
             }
             return entities;
+    }
+    
+    public Array<EnemyEntity> generateEnemies(World world){
+        Array<EnemyEntity> enemies = new Array<EnemyEntity>();
+        if (enemiesLayer != null){
+            MapProperties props = enemiesLayer.getProperties();
+            
+            float x      = scale * props.get("x", Float.class);
+            float y      = scale * props.get("y", Float.class);
+            float width  = scale * props.get("width", Float.class);
+            float height = scale * props.get("height", Float.class);
+            float enemyCount = scale * props.get("enemyCount", Float.class);
+            
+            
+            for (int i = 0; i<enemyCount ; i++){
+                enemies.add(new EnemyEntity(world, x+(float)Math.random()*width, y+(float)Math.random()*height));
+            }
+            
+        }
+        return enemies;
     }
 
     public void generateTileCollision(World world) {

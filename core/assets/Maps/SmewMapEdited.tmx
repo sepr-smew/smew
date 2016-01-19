@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="48" height="30" tilewidth="50" tileheight="50" nextobjectid="26">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="48" height="30" tilewidth="50" tileheight="50" nextobjectid="30">
  <tileset firstgid="1" name="Tiles And Walls" tilewidth="50" tileheight="50" tilecount="11">
   <tile id="0">
    <image width="50" height="50" source="Tiles/Tile2.png"/>
@@ -299,5 +299,22 @@
   <object id="23" x="769.525" y="474.732" width="857.58" height="1018.38"/>
   <object id="24" x="15.3139" y="15.3139" width="758.04" height="467.075"/>
   <object id="25" x="22.9709" y="968.606" width="742.726" height="524.502"/>
+ </objectgroup>
+ <objectgroup color="#af060e" name="enemy_spawn">
+  <object id="26" x="880.551" y="574.273" width="650.842" height="849.923">
+   <properties>
+    <property name="enemyCount" value="2"/>
+   </properties>
+  </object>
+  <object id="28" x="76.5697" y="578.101" width="597.243" height="298.622">
+   <properties>
+    <property name="enemyCount" value="1"/>
+   </properties>
+  </object>
+  <object id="29" x="1983.15" y="570.444" width="340.735" height="398.162">
+   <properties>
+    <property name="enemyCount" value="3"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

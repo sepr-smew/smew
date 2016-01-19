@@ -64,16 +64,20 @@ public class RoundScreen extends AbstractScreen {
             engine.addEntity(e);
         }
         
+        for (EnemyEntity e : map.generateEnemies(world)){
+            engine.addEntity(e);
+        }
+        
         //MapEntity mapEntity = map.entity();
         SmewEntity smew = new SmewEntity(world);
         StatsEntity stats = new StatsEntity();
-        EnemyEntity enemy = new EnemyEntity(world, 80f, 70f);
+        //EnemyEntity enemy = new EnemyEntity(world, 80f, 70f);
         //CameraEntity cameraEntity = new CameraEntity(camera, 128f, 80f);
         CameraEntity cameraEntity = new CameraEntity(camera);
         
         engine.addEntity(smew);
         engine.addEntity(stats);
-        engine.addEntity(enemy);
+        //engine.addEntity(enemy);
         engine.addEntity(cameraEntity);
         
         // graphics related systems
