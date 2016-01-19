@@ -272,7 +272,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="collision">
+ <objectgroup name="collision" visible="0">
   <object id="1" x="4.66636" y="4.66636" width="41.9972" height="1486.23"/>
   <object id="2" x="7.65697" y="3.82848" width="2381.32" height="42.1133"/>
   <object id="3" x="2354.52" y="7.65697" width="45.9418" height="1504.59"/>
@@ -294,26 +294,29 @@
   <object id="20" x="1255.74" y="398.162" width="287.136" height="145.482"/>
   <object id="21" x="53.5988" y="401.991" width="631.7" height="141.654"/>
  </objectgroup>
- <objectgroup color="#0000ff" name="rooms">
+ <objectgroup color="#0000ff" name="rooms" visible="0">
   <object id="22" x="1902.76" y="505.36" width="490.046" height="539.816"/>
   <object id="23" x="769.525" y="474.732" width="857.58" height="1018.38"/>
   <object id="24" x="15.3139" y="15.3139" width="758.04" height="467.075"/>
   <object id="25" x="22.9709" y="968.606" width="742.726" height="524.502"/>
  </objectgroup>
- <objectgroup color="#af060e" name="enemy_spawn">
+ <objectgroup color="#af060e" name="spawn">
   <object id="26" x="880.551" y="574.273" width="650.842" height="849.923">
    <properties>
     <property name="enemyCount" value="4"/>
+    <property name="starCount" value="7"/>
    </properties>
   </object>
   <object id="28" x="76.5697" y="578.101" width="597.243" height="298.622">
    <properties>
-    <property name="enemyCount" value=""/>
+    <property name="enemyCount" value="1"/>
+    <property name="starCount" value="3"/>
    </properties>
   </object>
   <object id="29" x="1983.15" y="570.444" width="340.735" height="398.162">
    <properties>
     <property name="enemyCount" value="2"/>
+    <property name="starCount" value="4"/>
    </properties>
   </object>
  </objectgroup>

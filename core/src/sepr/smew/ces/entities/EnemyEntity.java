@@ -15,7 +15,7 @@ import sepr.smew.util.Anim;
  
  public class EnemyEntity extends Entity {
     public EnemyEntity(World world, float x, float y) {
-        this.add(PhysicsComponent.dynamicBox(world, x, y, 12, 12));
+        this.add(PhysicsComponent.dynamicBox(this, world, x, y, 12, 12));
         this.add(new EnemyComponent());
         this.add(new TextureComponent("Sprites/Goose/Goose_sprite.png", 12, 12));
         this.add(new RenderPriorityComponent(1));

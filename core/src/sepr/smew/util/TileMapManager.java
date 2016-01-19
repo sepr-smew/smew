@@ -13,6 +13,8 @@ import com.badlogic.gdx.math.Vector2;
 
 import com.badlogic.gdx.utils.Array;
 
+import com.badlogic.ashley.core.Entity;
+
 import sepr.smew.ces.entities.*;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class TileMapManager {
     private TiledMapTileLayer mapLayer;
     private MapLayer collisionLayer;
     private MapLayer roomsLayer;
-    private MapLayer enemiesLayer;
+    private MapLayer spawnLayer;
     //private MapLayer ceilingLayer;
     private OrthogonalTiledMapRenderer renderer;
     private Batch batch;
@@ -42,7 +44,7 @@ public class TileMapManager {
         layers         = map.getLayers();
         collisionLayer = layers.get("collision");
         roomsLayer     = layers.get("rooms");
-        enemiesLayer     = layers.get("enemy_spawn");
+        spawnLayer     = layers.get("spawn");
         //ceilingLayer     = layers.get("ceiling");
         renderer       = new OrthogonalTiledMapRenderer(map, scale, batch);
         
@@ -75,11 +77,11 @@ public class TileMapManager {
             return entities;
     }
     
-    public Array<EnemyEntity> generateEnemies(World world){
-        Array<EnemyEntity> enemies = new Array<EnemyEntity>();
+    public Array<Entity> generateSpawns(World world){
+        Array<Entity> spawns = new Array<Entity>();
         
-        if (enemiesLayer != null){
-            for (MapObject object : enemiesLayer.getObjects()) {
+        if (spawnLayer != null){
+            for (MapObject object : spawnLayer.getObjects()) {
                 MapProperties props = object.getProperties();
                 
                 float x      = scale * props.get("x", Float.class);
@@ -87,15 +89,20 @@ public class TileMapManager {
                 float width  = scale * props.get("width", Float.class);
                 float height = scale * props.get("height", Float.class);
                 
-                int enemyCount = new Integer((String)props.get("enemyCount"));
+                int enemyCount = new Integer(props.get("enemyCount", "0", String.class));
+                int starCount = new Integer(props.get("starCount", "0", String.class));
                 
                 
                 for (int i = 0; i<enemyCount ; i++){
-                    enemies.add(new EnemyEntity(world, x+(float)Math.random()*width, y+(float)Math.random()*height));
+                    spawns.add(new EnemyEntity(world, x+(float)Math.random()*width, y+(float)Math.random()*height));
+                }
+                
+                for (int i = 0; i<starCount ; i++){
+                    spawns.add(new PickupEntity(world, x+(float)Math.random()*width, y+(float)Math.random()*height));
                 }
             }
         }
-        return enemies;
+        return spawns;
     }
 
     public void generateTileCollision(World world) {

@@ -8,6 +8,8 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.math.Vector2;
 
+import com.badlogic.ashley.core.Entity;
+
 /**
  * An object that is affected by physics in a given Box2D world. Remember to
  * add a TextureComponent as well if you want it to show up.
@@ -21,19 +23,27 @@ public class PhysicsComponent implements Component {
     private float width;
     private float height;
 
-    public static PhysicsComponent staticBox(World world, float x, float y, float width, float height) {
-        return box(world, x, y, width, height, BodyDef.BodyType.StaticBody);
+    public static PhysicsComponent staticBox(Entity entity, World world, float x, float y, float width, float height) {
+        return box(entity, world, x, y, width, height, BodyDef.BodyType.StaticBody);
     }
 
-    public static PhysicsComponent dynamicBox(World world, float x, float y, float width, float height) {
-        return box(world, x, y, width, height, BodyDef.BodyType.DynamicBody);
+    public static PhysicsComponent dynamicBox(Entity entity, World world, float x, float y, float width, float height) {
+        return box(entity, world, x, y, width, height, BodyDef.BodyType.DynamicBody);
     }
 
-    public static PhysicsComponent kinematicBox(World world, float x, float y, float width, float height) {
-        return box(world, x, y, width, height, BodyDef.BodyType.KinematicBody);
+    public static PhysicsComponent kinematicBox(Entity entity, World world, float x, float y, float width, float height) {
+        return box(entity, world, x, y, width, height, BodyDef.BodyType.KinematicBody);
     }
-
-    private static PhysicsComponent box(World world, float x, float y, float width, float height, BodyDef.BodyType bodyType) {
+    
+    public static PhysicsComponent sensorBox(Entity entity, World world, float x, float y, float width, float height) {
+        return box(entity, world, x, y, width, height, BodyDef.BodyType.StaticBody, true);
+    }
+    
+    private static PhysicsComponent box(Entity entity, World world, float x, float y, float width, float height, BodyDef.BodyType bodyType) {
+        return box(entity, world, x, y, width, height, bodyType, false);
+    }
+    
+    private static PhysicsComponent box(Entity entity, World world, float x, float y, float width, float height, BodyDef.BodyType bodyType, boolean isSensor) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = bodyType;
         bodyDef.position.set(x+(width/2), y+(height/2));
@@ -43,8 +53,10 @@ public class PhysicsComponent implements Component {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = boundingBox;
+        fixtureDef.isSensor = isSensor;
 
         Body body = world.createBody(bodyDef);
+        body.setUserData(entity);
         body.createFixture(fixtureDef);
         boundingBox.dispose();
 

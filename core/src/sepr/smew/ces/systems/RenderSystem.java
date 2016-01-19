@@ -48,6 +48,7 @@ public class RenderSystem extends SortedIteratingSystem {
 
     public RenderSystem(int priority, Batch batch, Batch UIBatch, OrthographicCamera camera, OrthographicCamera UICamera) {
         super(Family
+            .all(RenderPriorityComponent.class)
             .one(MapLayerComponent.class, TextureComponent.class, TextComponent.class, CompositeDrawableComponent.class)
             .one(MapLayerComponent.class, PhysicsComponent.class, OverlayComponent.class) //NOT AN ERROR
             // If it has a map component, it does not need a phys or overlay one.

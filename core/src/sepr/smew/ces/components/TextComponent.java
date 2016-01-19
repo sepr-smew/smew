@@ -33,6 +33,7 @@ public class TextComponent implements DrawableComponent {
         this.text="";
     }
     public TextComponent(String text){
+        this();
         this.text=text;
     }
     

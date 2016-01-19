@@ -13,7 +13,7 @@ import com.badlogic.gdx.physics.box2d.World;
  */
 public class ObstacleEntity extends Entity {
     public ObstacleEntity(World world, float x, float y, float width, float height) {
-        this.add(PhysicsComponent.staticBox(world, x, y, width, height));
+        this.add(PhysicsComponent.staticBox(this, world, x, y, width, height));
     }
 }
 

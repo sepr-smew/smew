@@ -20,6 +20,7 @@ import sepr.smew.util.*;
 import com.badlogic.gdx.ScreenAdapter;
 
 import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.core.Entity;
 
 
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -64,18 +65,18 @@ public class RoundScreen extends AbstractScreen {
             engine.addEntity(e);
         }
         
-        for (EnemyEntity e : map.generateEnemies(world)){
+        for (Entity e : map.generateSpawns(world)){
             engine.addEntity(e);
         }
         
         //MapEntity mapEntity = map.entity();
         SmewEntity smew = new SmewEntity(world);
+        PickupEntity pickup = new PickupEntity(world, 40, 40);
         StatsEntity stats = new StatsEntity();
-        //EnemyEntity enemy = new EnemyEntity(world, 80f, 70f);
-        //CameraEntity cameraEntity = new CameraEntity(camera, 128f, 80f);
         CameraEntity cameraEntity = new CameraEntity(camera);
         
         engine.addEntity(smew);
+        engine.addEntity(pickup);
         engine.addEntity(stats);
         //engine.addEntity(enemy);
         engine.addEntity(cameraEntity);
@@ -84,7 +85,7 @@ public class RoundScreen extends AbstractScreen {
         SpritesheetSystem spritesheetSystem = new SpritesheetSystem(1);
         DirectionalSpritesheetSystem dSpritesheetSystem = new DirectionalSpritesheetSystem(1);
         CameraMovementSystem cameraMovementSystem = new CameraMovementSystem(2, map);
-        StatsSystem statsSystem = new StatsSystem(2, stats);
+        StatsSystem statsSystem = new StatsSystem(2, world, engine, smew, stats);
         RenderSystem renderSystem = new RenderSystem(3, batch, UIBatch, camera, UICamera);
         
         engine.addSystem(spritesheetSystem);
