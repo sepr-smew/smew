@@ -22,25 +22,28 @@ import static org.mockito.Mockito.*;
  */
 public class SmewMovementSystemTest {
     private Engine engine;
-    private World  world;
     private Entity entity;
+    private World world;
 
-    private void step(float delta) {
-        engine.update(delta);
-        world.step(delta, 6, 2);
-    }
+    private SmewMovementSystem sms;
 
     @Before
     public void setUp() {
         engine = new Engine(); // we're not mocking Engine or World, because... what's the point?
         world  = new World(Vector2.Zero, true);
         entity = new Entity();
+        sms    = new SmewMovementSystem(1);
+
+        engine.addSystem(sms);
+    }
+
+    private void step(float delta) {
+        engine.update(delta);
+        world.step(delta, 6, 2);
     }
 
     @Test
     public void DoesNotMoveWithoutInput() {
-        // Add our system
-        engine.addSystem(new SmewMovementSystem(1));
         // Setup entity
         entity.add(new SmewMovementComponent(5f));
         PhysicsComponent physics = PhysicsComponent.dynamicBox(world, 50, 50, 50, 50);
@@ -55,9 +58,6 @@ public class SmewMovementSystemTest {
 
     @Test
     public void MovesAccordingToMagnitude() {
-        // Add our system
-        SmewMovementSystem sms = new SmewMovementSystem(1);
-        engine.addSystem(sms);
         // Setup entity
         entity.add(new SmewMovementComponent(5f));
         PhysicsComponent physics = PhysicsComponent.dynamicBox(world, 50, 50, 50, 50);
@@ -74,9 +74,6 @@ public class SmewMovementSystemTest {
 
     @Test
     public void MovementIsKeySpecific() {
-        // Add our system
-        SmewMovementSystem sms = new SmewMovementSystem(1);
-        engine.addSystem(sms);
         // Setup entity
         entity.add(new SmewMovementComponent(10f));
         PhysicsComponent physics = PhysicsComponent.dynamicBox(world, 50, 50, 50, 50);
@@ -93,9 +90,6 @@ public class SmewMovementSystemTest {
 
     @Test
     public void KeepsMovingOnHold() {
-        // Add our system
-        SmewMovementSystem sms = new SmewMovementSystem(1);
-        engine.addSystem(sms);
         // Setup entity
         entity.add(new SmewMovementComponent(10f));
         PhysicsComponent physics = PhysicsComponent.dynamicBox(world, 50, 50, 50, 50);
@@ -112,9 +106,6 @@ public class SmewMovementSystemTest {
 
     @Test
     public void StopsOnKeyUp() {
-        // Add our system
-        SmewMovementSystem sms = new SmewMovementSystem(1);
-        engine.addSystem(sms);
         // Setup entity
         entity.add(new SmewMovementComponent(10f));
         PhysicsComponent physics = PhysicsComponent.dynamicBox(world, 50, 50, 50, 50);

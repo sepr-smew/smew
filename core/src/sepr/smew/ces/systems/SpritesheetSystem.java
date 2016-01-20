@@ -25,8 +25,7 @@ public class SpritesheetSystem extends IteratingSystem {
     @Override
     public void processEntity(Entity entity, float deltaTime) {
         TextureComponent tc = tm.get(entity);
-        BaseSpritesheetComponent sc;
-        sc = (BaseSpritesheetComponent) (sm.has(entity)? sm.get(entity) : dsm.get(entity));
+        BaseSpritesheetComponent sc = sm.has(entity)? sm.get(entity) : dsm.get(entity);
     
         sc.advance(deltaTime);
         tc.textureRegion = sc.currentFrame();
