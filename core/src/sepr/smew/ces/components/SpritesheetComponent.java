@@ -22,6 +22,11 @@ public class SpritesheetComponent implements BaseSpritesheetComponent {
         animation = new Animation(frameDuration, keyFrames, Animation.PlayMode.LOOP);
     }
     
+    public SpritesheetComponent(Animation animation) {
+        stateTime = 0f;
+        this.animation = animation;
+    }
+    
     public void advance(float deltaTime){
         stateTime+=deltaTime;  // leaves open for future animated things.
     }
